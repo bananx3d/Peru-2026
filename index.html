@@ -2,195 +2,50 @@
 <html lang="pl">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <meta name="theme-color" content="#123f39">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#073b31">
+  <meta name="description" content="Peru 2026 — prywatny przewodnik wyprawowy i aplikacja PWA.">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
   <meta name="apple-mobile-web-app-title" content="Peru 2026">
   <link rel="manifest" href="./manifest.webmanifest">
   <link rel="apple-touch-icon" href="./icons/icon-192.png">
+  <link rel="icon" href="./assets/logo.svg">
   <link rel="stylesheet" href="./styles.css">
   <title>Peru 2026 — Expedition Companion</title>
 </head>
 <body>
-  <header class="hero">
-    <div class="eyebrow">EXPEDITION COMPANION</div>
-    <h1>Peru 2026</h1>
-    <p>Kuba • Weronika • Daniel</p>
-    <div class="hero-grid">
-      <div><strong>04–26.09</strong><span>termin</span></div>
-      <div><strong id="countdown">—</strong><span>do wyjazdu</span></div>
-      <div><strong>21 dni</strong><span>na miejscu</span></div>
-    </div>
-  </header>
-
-  <nav class="tabs" aria-label="Nawigacja">
-    <button class="tab active" data-target="start">Start</button>
-    <button class="tab" data-target="plan">Plan</button>
-    <button class="tab" data-target="machu">Machu</button>
-    <button class="tab" data-target="amazon">Amazonia</button>
-    <button class="tab" data-target="checklist">Lista</button>
-    <button class="tab" data-target="more">Więcej</button>
-  </nav>
-
-  <main>
-    <section id="start" class="screen active">
-      <article class="card route">
-        <div class="card-label">TRASA</div>
-        <h2>Lima → Iquitos → Amazonia → Cusco → Sacred Valley → Machu Picchu → Lima</h2>
-      </article>
-
-      <article class="card featured">
-        <div>
-          <div class="card-label">NAJWAŻNIEJSZY WARIANT</div>
-          <h2>Po Machu wracamy o 20:50</h2>
-          <p>Noc w Ollantaytambo, rano taxi na lotnisko w Cusco i popołudniowy lot do Limy.</p>
-        </div>
-        <div class="badge">REKOMENDOWANE</div>
-      </article>
-
-      <div class="two-col">
-        <article class="mini-card">
-          <span>Najbliższy priorytet</span>
-          <strong>Hotele w Andach</strong>
-        </article>
-        <article class="mini-card">
-          <span>Curassow — saldo</span>
-          <strong>1920 USD</strong>
-        </article>
+  <div id="appShell">
+    <aside class="sidebar">
+      <div class="brand">
+        <img src="./assets/logo.svg" alt="">
+        <div><strong>PERU 2026</strong><span>EXPEDITION COMPANION</span></div>
       </div>
+      <nav id="sideNav"></nav>
+      <div class="sidebar-footer">
+        <button id="offlineButton" class="soft-button">⌁ <span data-i18n="offline">Tryb offline</span></button>
+        <small>Kuba • Weronika • Daniel</small>
+      </div>
+    </aside>
 
-      <article class="card">
-        <div class="card-label">PRYWATNE DANE</div>
-        <h2>Kody, adresy i bilety trzymaj w Notion</h2>
-        <p>Publiczna strona GitHub Pages nie powinna zawierać kodów rezerwacji ani dokumentów.</p>
-        <a class="primary-link" href="https://app.notion.com/p/3a247aa8423881cbbed8e585b38bf1fa" target="_blank" rel="noopener">Otwórz prywatny Notion</a>
-      </article>
-    </section>
+    <div class="workspace">
+      <header class="mobile-header">
+        <button id="mobileMenu" class="icon-button">☰</button>
+        <div class="mobile-brand"><img src="./assets/logo.svg" alt=""><strong>PERU 2026</strong></div>
+        <button id="langTop" class="lang-button">EN</button>
+      </header>
 
-    <section id="plan" class="screen">
-      <article class="day-card">
-        <div class="date">04–06.09</div><div><h3>Lima</h3><p>Przyloty, sen, regeneracja i lekki spacer bez presji.</p></div>
-      </article>
-      <article class="day-card">
-        <div class="date">07–12.09</div><div><h3>Amazonia</h3><p>Lot do Iquitos i pełny program Curassow Amazon Lodge.</p></div>
-      </article>
-      <article class="day-card">
-        <div class="date">12–14.09</div><div><h3>Iquitos</h3><p>Prysznic, pranie, dobre jedzenie, przepakowanie i odpoczynek.</p></div>
-      </article>
-      <article class="day-card">
-        <div class="date">14–17.09</div><div><h3>Cusco</h3><p>Spokojne wejście w wysokość, centrum i dwa dni aklimatyzacji.</p></div>
-      </article>
-      <article class="day-card">
-        <div class="date">17.09</div><div><h3>Sacred Valley</h3><p>Pisac → Moray → Maras / Salineras → Ollantaytambo.</p></div>
-      </article>
-      <article class="day-card">
-        <div class="date">18.09</div><div><h3>Ollantaytambo</h3><p>Ruiny, stare miasto, widoki, kawa i spokojny dzień.</p></div>
-      </article>
-      <article class="day-card">
-        <div class="date">19.09</div><div><h3>Aguas Calientes</h3><p>Pociąg 12:55, szybki check-in i kolejka po Ruta 2.</p></div>
-      </article>
-      <article class="day-card">
-        <div class="date">20.09</div><div><h3>Machu Picchu</h3><p>Ruta 3-A o 07:00, Waynapicchu, możliwa Ruta 2 i powrót 20:50.</p></div>
-      </article>
-      <article class="day-card">
-        <div class="date">21–26.09</div><div><h3>Lima i powroty</h3><p>Spokojna końcówka podróży, jedzenie, Miraflores i Barranco.</p></div>
-      </article>
-    </section>
+      <main id="mainContent" tabindex="-1"></main>
 
-    <section id="machu" class="screen">
-      <article class="mission">
-        <div class="mission-top">MISSION BRIEF</div>
-        <h2>Machu Picchu</h2>
-        <p>20.09.2026</p>
-      </article>
+      <aside id="rightRail" class="right-rail"></aside>
+    </div>
 
-      <article class="card timeline">
-        <div><time>05:00</time><span>Pobudka</span></div>
-        <div><time>05:30</time><span>Wyjście do kolejki na autobus</span></div>
-        <div><time>07:00</time><span>Ruta 3-A + Waynapicchu</span></div>
-        <div><time>11:15–12:00</time><span>Wyjście i szybkie jedzenie</span></div>
-        <div><time>13:00 / 14:00</time><span>Ruta 2, jeśli uda się kupić</span></div>
-        <div><time>20:50</time><span>Pociąg do Ollantaytambo</span></div>
-      </article>
+    <nav id="bottomNav" class="bottom-nav"></nav>
+  </div>
 
-      <article class="card">
-        <div class="card-label">PLAN ZAKUPU RUTA 2</div>
-        <ol>
-          <li>19.09 po przyjeździe zabrać oryginalne paszporty.</li>
-          <li>Stanąć w kolejce około 14:45–15:00.</li>
-          <li>Priorytet: 13:00, potem 14:00, 15:00 awaryjnie.</li>
-          <li>Przy tej samej godzinie: 2A przed 2B.</li>
-        </ol>
-      </article>
-    </section>
+  <div id="toast" class="toast" role="status"></div>
 
-    <section id="amazon" class="screen">
-      <article class="card jungle">
-        <div class="card-label">07–12.09</div>
-        <h2>Curassow Amazon Lodge</h2>
-        <p>6 dni / 5 nocy. Odbiór z lotniska Iquitos i pełny program wyprawy.</p>
-      </article>
-
-      <article class="card">
-        <h2>Najważniejsze wyposażenie</h2>
-        <div class="tag-grid">
-          <span>długie spodnie</span><span>repelent</span><span>czołówka</span>
-          <span>worek wodoodporny</span><span>powerbank</span><span>kurtka przeciwdeszczowa</span>
-        </div>
-      </article>
-
-      <article class="card">
-        <h2>Shot list</h2>
-        <ul>
-          <li>canoe POV i wejście w boczne kanały</li>
-          <li>zachód nad rzeką</li>
-          <li>dźwięki nocnej dżungli bez komentarza</li>
-          <li>małpy, ptaki, owady i detale roślin</li>
-          <li>realia lodge i reakcje ekipy</li>
-        </ul>
-      </article>
-    </section>
-
-    <section id="checklist" class="screen">
-      <article class="card">
-        <div class="card-label">ZAPISUJE SIĘ NA TELEFONIE</div>
-        <h2>Do załatwienia</h2>
-        <label class="check"><input type="checkbox" data-key="cusco-hotel"><span>Hotel Cusco 14–17.09</span></label>
-        <label class="check"><input type="checkbox" data-key="ollan-hotel"><span>Hotel Ollantaytambo 17–19.09</span></label>
-        <label class="check"><input type="checkbox" data-key="ollan-extra"><span>Anulowalna noc 20/21.09</span></label>
-        <label class="check"><input type="checkbox" data-key="aguas-hotel"><span>Hotel Aguas Calientes 19–20.09</span></label>
-        <label class="check"><input type="checkbox" data-key="driver"><span>Kierowca Sacred Valley 17.09</span></label>
-        <label class="check"><input type="checkbox" data-key="flight"><span>Lot Cusco → Lima 21.09</span></label>
-        <label class="check"><input type="checkbox" data-key="lima-hotel"><span>Hotel Lima 21–26.09</span></label>
-        <label class="check"><input type="checkbox" data-key="train"><span>Pociąg powrotny 20.09</span></label>
-        <label class="check"><input type="checkbox" data-key="bus"><span>Bus Aguas ↔ Machu</span></label>
-        <label class="check"><input type="checkbox" data-key="curassow"><span>Opłacić saldo Curassow</span></label>
-      </article>
-    </section>
-
-    <section id="more" class="screen">
-      <article class="card">
-        <h2>Jedzenie do spróbowania</h2>
-        <div class="tag-grid">
-          <span>ceviche</span><span>lomo saltado</span><span>ají de gallina</span>
-          <span>anticuchos</span><span>causa limeña</span><span>chicha morada</span>
-        </div>
-      </article>
-      <article class="card">
-        <h2>Photo guide</h2>
-        <p><strong>Lima:</strong> klify Miraflores, ocean, uliczki Barranco.</p>
-        <p><strong>Cusco:</strong> Plaza de Armas rano, San Blas, kamienne mury.</p>
-        <p><strong>Amazonia:</strong> nisko nad wodą, detale owadów, zachód nad rzeką.</p>
-        <p><strong>Machu:</strong> szeroki kadr z Ruta 2, piony na Waynapicchu, sylwetki w chmurach.</p>
-      </article>
-      <article class="card">
-        <h2>Instalacja na iPhonie</h2>
-        <p>Po opublikowaniu strony: Safari → Udostępnij → Dodaj do ekranu początkowego.</p>
-      </article>
-    </section>
-  </main>
-
+  <script src="./data.js"></script>
   <script src="./app.js"></script>
 </body>
 </html>
