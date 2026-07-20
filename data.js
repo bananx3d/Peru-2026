@@ -1,554 +1,142 @@
-window.GUIDE_DATA={
-  "photos": {
-    "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%20Peru.jpg?width=1800",
-    "machu": "https://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%20Peru.jpg?width=1600",
-    "wayna": "https://commons.wikimedia.org/wiki/Special:FilePath/Huayna%20Picchu%2C%20Peru.jpg?width=1600",
-    "cusco": "https://commons.wikimedia.org/wiki/Special:FilePath/Cusco%20Peru.jpg?width=1600",
-    "pisac": "https://commons.wikimedia.org/wiki/Special:FilePath/Pisac%20Peru.jpg?width=1600",
-    "moray": "https://commons.wikimedia.org/wiki/Special:FilePath/Moray%20Peru.jpg?width=1600",
-    "maras": "https://commons.wikimedia.org/wiki/Special:FilePath/Salineras%20de%20Maras%2C%20Peru.jpg?width=1600",
-    "chinchero": "https://commons.wikimedia.org/wiki/Special:FilePath/Chinchero%2C%20Peru.jpg?width=1600",
-    "ollanta": "https://commons.wikimedia.org/wiki/Special:FilePath/Ollantaytambo%2C%20Peru.jpg?width=1600",
-    "lima": "https://commons.wikimedia.org/wiki/Special:FilePath/Miraflores%2C%20Lima%2C%20Peru.jpg?width=1600",
-    "iquitos": "https://commons.wikimedia.org/wiki/Special:FilePath/Iquitos%2C%20Peru.jpg?width=1600",
-    "amazon": "https://commons.wikimedia.org/wiki/Special:FilePath/Amazon%20Rainforest%2C%20Peru.jpg?width=1600",
-    "curassow_room": "https://curassowlodge.com/wp-content/uploads/2025/03/Bungalow-Simple-1.jpg",
-    "curassow_couple": "https://curassowlodge.com/wp-content/uploads/2025/03/Bungalow-Matrimonial-1.jpg",
-    "victoria": "https://commons.wikimedia.org/wiki/Special:FilePath/Victoria%20amazonica.jpg?width=1400",
-    "dolphin": "https://commons.wikimedia.org/wiki/Special:FilePath/Amazon%20river%20dolphin.jpg?width=1400",
-    "sloth": "https://commons.wikimedia.org/wiki/Special:FilePath/Bradypus%20variegatus.jpg?width=1400",
-    "capybara": "https://commons.wikimedia.org/wiki/Special:FilePath/Hydrochoerus%20hydrochaeris.jpg?width=1400",
-    "caiman": "https://commons.wikimedia.org/wiki/Special:FilePath/Caiman%20crocodilus.jpg?width=1400",
-    "macaw": "https://commons.wikimedia.org/wiki/Special:FilePath/Ara%20ararauna.jpg?width=1400",
-    "hoatzin": "https://commons.wikimedia.org/wiki/Special:FilePath/Opisthocomus%20hoazin.jpg?width=1400",
-    "curassow": "https://commons.wikimedia.org/wiki/Special:FilePath/Crax%20globulosa.jpg?width=1400"
+window.PERU_2026 = {
+  meta: {
+    title: "Peru 2026",
+    subtitle: "Expedition Command",
+    travelers: "Kuba · Weronika · Daniel",
+    dates: "04–26.09.2026",
+    startDate: "2026-09-04T00:00:00+02:00",
+    privacy: "Publiczna wersja nie zawiera kodów rezerwacji, dokładnych adresów, telefonu kontaktowego ani konkretnych kwot.",
+    notion: "",
+    hero: "https://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%20Peru.jpg?width=1800"
   },
-  "sections": [
-    {
-      "id": "peru",
-      "title": "Peru: kraj wielu światów",
-      "kicker": "KONTEKST",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%20Peru.jpg?width=1800",
-      "intro": "Wasza trasa łączy trzy zupełnie różne Peru: nadmorską Limę, nizinną Amazonię i wysokie Andy. To nie jest jedna kultura ani jeden krajobraz, lecz podróż przez strefy klimatyczne, języki, tradycje i warstwy historii.",
-      "blocks": [
-        {
-          "h": "Zanim pojawili się Inkowie",
-          "p": "Andy nie zaczynają się od Inków. Na długo przed nimi rozwijały się społeczeństwa Norte Chico, Chavín, Paracas, Nazca, Moche, Wari, Tiwanaku i Chimú. Inkowie odziedziczyli i rozwinęli starsze tradycje rolnictwa tarasowego, pracy w kamieniu, organizacji pracy oraz kultu gór i wody."
-        },
-        {
-          "h": "Tawantinsuyu",
-          "p": "Państwo Inków nazywało się Tawantinsuyu — „cztery części razem”. W XV wieku, szczególnie za Pachacúteca i jego następców, rozszerzyło się od dzisiejszej Kolumbii po środkowe Chile. Imperium spajały drogi, magazyny, administracja, obowiązek pracy i system wzajemności, nie jednolity rynek pieniężny."
-        },
-        {
-          "h": "Podbój i ciągłość",
-          "p": "Hiszpański podbój nie wymazał świata andyjskiego. Katolicyzm, język hiszpański i kolonialne miasta nałożyły się na starsze struktury. W Cusco zobaczycie kościoły stojące na inkaskich fundamentach, a w Chinchero tekstylia i rytuały, które nadal budują lokalną tożsamość."
-        }
-      ]
-    },
-    {
-      "id": "amazon",
-      "title": "Amazonia i Curassow Lodge",
-      "kicker": "TAMSHIYACU–TAHUAYO",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Amazon%20Rainforest%2C%20Peru.jpg?width=1600",
-      "intro": "Curassow leży około 110 km w górę rzeki od Iquitos, przy Yanayacu, w obrębie Reserva Comunal Tamshiyacu–Tahuayo. Lodge podaje, że dotarcie z Iquitos zajmuje około trzech godzin lądem i szybką łodzią. We wrześniu poziom wody opada, dlatego końcowy odcinek może wymagać dodatkowej, mniejszej łodzi.",
-      "blocks": [
-        {
-          "h": "Dlaczego ten region jest wyjątkowy",
-          "p": "Mozaika rzek, jezior, lasów zalewowych i terra firme tworzy wiele nisz ekologicznych na małej przestrzeni. Dzięki temu podczas jednego dnia można obserwować ptaki nad wodą, małpy w koronach drzew, ślady ssaków na lądzie i nocne płazy przy brzegach."
-        },
-        {
-          "h": "Jak naprawdę wygląda dzień",
-          "p": "Program nie jest sztywną wycieczką autobusową. Aktywność zwierząt, poziom wody, deszcz i decyzje przewodnika zmieniają kolejność. Najcenniejsze godziny to świt, zmierzch i noc. W południe wiele zwierząt ogranicza aktywność, więc wtedy zwykle wraca się na posiłek i odpoczynek."
-        },
-        {
-          "h": "Lodge, nie luksusowy resort",
-          "p": "Oficjalne opisy Curassow mówią o prywatnych bungalowach z łazienką, moskitierami, wentylatorami, oświetleniem, energią i oczyszczoną wodą. To wygodna baza w terenie, ale nadal środek wilgotnego lasu: dźwięki, owady, błoto i zmienny program są częścią doświadczenia."
-        },
-        {
-          "gallery": [
-            [
-              "https://curassowlodge.com/wp-content/uploads/2025/03/Bungalow-Simple-1.jpg",
-              "Oficjalne zdjęcie Curassow Lodge — bungalow"
-            ],
-            [
-              "https://curassowlodge.com/wp-content/uploads/2025/03/Bungalow-Matrimonial-1.jpg",
-              "Oficjalne zdjęcie Curassow Lodge — bungalow dla pary"
-            ],
-            [
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Victoria%20amazonica.jpg?width=1400",
-              "Victoria amazonica — gigantyczna lilia wodna"
-            ]
-          ]
-        },
-        {
-          "h": "Wasze 6 dni / 5 nocy",
-          "list": [
-            "Dzień 1: transfer, zakwaterowanie, pierwszy spacer i nocna wyprawa.",
-            "Dzień 2: wczesna eksploracja, wędkowanie, jeziora, delfiny i nocny spacer.",
-            "Dzień 3: hoatziny, małpy i elastyczna wieczorna aktywność.",
-            "Dzień 4: jezioro Yarina, pierwotny las i podstawy survivalu.",
-            "Dzień 5: wyjście do obozu i nocleg w namiotach.",
-            "Dzień 6: powrót, wizyta w społeczności i transfer do Iquitos około 16:00."
-          ]
-        }
-      ]
-    },
-    {
-      "id": "iquitos",
-      "title": "Iquitos: miasto kauczuku",
-      "kicker": "LORETO",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Iquitos%2C%20Peru.jpg?width=1600",
-      "intro": "Iquitos jest bramą do peruwiańskiej Amazonii i jednym z największych miast świata bez drogowego połączenia z krajową siecią dróg. Jego dzisiejszy wygląd w dużej mierze ukształtował boom kauczukowy z końca XIX i początku XX wieku.",
-      "blocks": [
-        {
-          "h": "Bogactwo i przemoc epoki kauczuku",
-          "p": "Eksport kauczuku przyniósł fortuny kupcom, europejskie fasady i importowane materiały. Ten sam system opierał się jednak na brutalnym wyzysku ludności rdzennej. Spacer po centrum warto traktować nie jako historię egzotycznego bogactwa, ale jako materialny ślad globalnego popytu i lokalnej przemocy."
-        },
-        {
-          "h": "Co zobaczycie 13 września",
-          "list": [
-            "Plaza de Armas i republikańskie budynki z epoki kauczuku.",
-            "Malecón Tarapacá z widokiem na rzekę Itaya.",
-            "Casa de Fierro — metalowy budynek kojarzony z europejskimi technologiami epoki boomu.",
-            "Targ i kuchnia amazońska, jeśli będziecie mieli energię po dżungli."
-          ]
-        }
-      ]
-    },
-    {
-      "id": "cusco",
-      "title": "Cusco: stolica świata Inków",
-      "kicker": "14–17 WRZEŚNIA",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Cusco%20Peru.jpg?width=1600",
-      "intro": "Cusco było politycznym i symbolicznym centrum Tawantinsuyu. Inkowie wyobrażali sobie miasto jako miejsce, z którego porządek rozchodzi się na cztery części imperium. Po podboju Hiszpanie przekształcili centrum, wykorzystując inkaskie mury jako fundamenty kościołów i rezydencji.",
-      "blocks": [
-        {
-          "h": "Plaza de Armas",
-          "p": "Dzisiejszy plac zajmuje część większej inkaskiej przestrzeni ceremonialnej. To tutaj koncentrowały się procesje, elity i rytuały. Katedra oraz kościół Compañía de Jesús pokazują, jak kolonialna władza przejęła najważniejszą przestrzeń miasta."
-        },
-        {
-          "h": "Qorikancha",
-          "p": "Świątynia Słońca była jednym z najważniejszych sanktuariów imperium. Hiszpanie wznieśli na jej murach klasztor Santo Domingo. Zwróćcie uwagę na precyzję dopasowania bloków, lekko pochylone ściany i sposób, w jaki kamienne wnętrza organizują światło."
-        },
-        {
-          "h": "San Blas i San Pedro",
-          "p": "San Blas to dzielnica rzemieślnicza położona na stromym zboczu, dlatego podczas aklimatyzacji nie warto gonić. Mercado San Pedro jest dobrym miejscem, by zobaczyć współczesne produkty andyjskie, soki, pieczywo, sery, ziemniaki i codzienny rytm miasta."
-        },
-        {
-          "h": "Aklimatyzacja",
-          "p": "Cusco leży wyżej niż Ollantaytambo i Machu Picchu. Pierwsze dwa dni powinny pozostać spokojne: dużo wody, normalne posiłki, brak alkoholu w pierwszą noc i przerwy przy każdym mocniejszym objawie."
-        }
-      ]
-    },
-    {
-      "id": "sacred",
-      "title": "Sacred Valley — dzień z TaxiDatum",
-      "kicker": "17 WRZEŚNIA",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Pisac%20Peru.jpg?width=1600",
-      "intro": "Wasz prywatny przejazd ma połączyć Pisac Ruins, Pisac Market, Moray, Maras, Chinchero i zakończyć się w Ollantaytambo. To ambitny dzień, więc kierowca może zmienić kolejność zależnie od ruchu, godzin otwarcia i czasu spędzonego na stanowiskach.",
-      "blocks": [
-        {
-          "h": "Pisac — miasto nad doliną",
-          "p": "Stanowisko archeologiczne rozciąga się wysoko nad współczesnym miasteczkiem. Zobaczycie ogromny system tarasów, sektory mieszkalne, ceremonialne i grobowce w skałach po przeciwnej stronie wąwozu. Pisac kontrolowało wejście do doliny i produkcję na różnych wysokościach."
-        },
-        {
-          "h": "Pisac Market",
-          "p": "Targ jest dziś połączeniem lokalnego handlu i rynku turystycznego. Warto patrzeć nie tylko na pamiątki, ale też na owoce, kukurydzę, zioła, sery i sposób, w jaki miasteczko obsługuje okoliczne społeczności."
-        },
-        {
-          "h": "Moray",
-          "p": "Koncentryczne zagłębienia przypominają amfiteatry. Najpopularniejsza interpretacja mówi o eksperymentach rolniczych i mikroklimatach, ale nie należy przedstawiać jej jako całkowicie udowodnionej. Pewne jest, że forma terenu, drenaż i tarasy tworzą wyraźne różnice warunków."
-        },
-        {
-          "h": "Maras / Salineras",
-          "p": "Tysiące małych basenów są zasilane słonym źródłem. Produkcja soli ma korzenie przedinkaskie i trwa do dziś. Białe i brązowe odcienie zależą od wody, minerałów, etapu odparowania i pory roku."
-        },
-        {
-          "h": "Chinchero",
-          "p": "Chinchero łączy inkaskie tarasy i mury z kolonialnym kościołem oraz żywą tradycją tkacką. Pokazy barwienia bywają turystyczne, ale techniki używania wełny, naturalnych barwników i wzorów naprawdę odnoszą się do lokalnego rzemiosła."
-        },
-        {
-          "gallery": [
-            [
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Pisac%20Peru.jpg?width=1600",
-              "Pisac"
-            ],
-            [
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Moray%20Peru.jpg?width=1600",
-              "Moray"
-            ],
-            [
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Salineras%20de%20Maras%2C%20Peru.jpg?width=1600",
-              "Salineras de Maras"
-            ],
-            [
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Chinchero%2C%20Peru.jpg?width=1600",
-              "Chinchero"
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "id": "ollanta",
-      "title": "Ollantaytambo: żywe inkaskie miasto",
-      "kicker": "17–20 WRZEŚNIA",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Ollantaytambo%2C%20Peru.jpg?width=1600",
-      "intro": "Ollantaytambo nie jest wyłącznie ruiną. Współczesne miasteczko nadal wykorzystuje inkaski układ ulic, kanały i fundamenty. Nad nim wznosi się monumentalny kompleks, który pełnił funkcje ceremonialne, administracyjne i obronne.",
-      "blocks": [
-        {
-          "h": "Podejście i tarasy",
-          "p": "Wejście prowadzi po stromych schodach między tarasami. Z góry dobrze widać kontrolę nad doliną oraz regularny plan miasteczka. Nie śpieszcie się — wysokość jest niższa niż w Cusco, ale schody nadal męczą."
-        },
-        {
-          "h": "Świątynia Słońca",
-          "p": "Najbardziej znany fragment tworzą wielkie bloki różowego granitu. Część konstrukcji pozostała niedokończona. Kamień transportowano z kamieniołomów po przeciwnej stronie doliny, co pokazuje skalę organizacji pracy."
-        },
-        {
-          "h": "Konflikt z Hiszpanami",
-          "p": "W 1537 roku Manco Inca wykorzystał teren i system kanałów przeciw wojskom hiszpańskim. Ollantaytambo było jednym z miejsc, gdzie opór odniósł realny sukces, choć Manco później wycofał się do Vilcabamby."
-        },
-        {
-          "h": "Dzień 18 września",
-          "p": "Macie cały spokojny dzień na ruiny, stare uliczki, kanały i punkty widokowe. To dobra decyzja: stanowisko można oglądać bez presji dalszego transportu, a organizm odpocznie przed Aguas Calientes i Waynapicchu."
-        }
-      ]
-    },
-    {
-      "id": "machu",
-      "title": "Machu Picchu: przewodnik terenowy",
-      "kicker": "20 WRZEŚNIA",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%20Peru.jpg?width=1600",
-      "intro": "Macie kupioną Rutę 3-A — Montaña Waynapicchu na 07:00. Dzień wcześniej próbujecie dokupić 2-A lub 2-B, najlepiej na 13:00, ewentualnie 14:00. Te wejścia pokazują różne części stanowiska i razem dają znacznie pełniejszy obraz.",
-      "blocks": [
-        {
-          "h": "Czym było Machu Picchu",
-          "p": "Najczęściej uznaje się je za królewską posiadłość związaną z Pachacútekiem, funkcjonującą w XV i na początku XVI wieku. Nie było „zaginionym miastem” dla lokalnych mieszkańców. Hiram Bingham w 1911 roku nagłośnił stanowisko na świecie, ale trafił tam dzięki informacjom osób mieszkających w okolicy."
-        },
-        {
-          "h": "Ruta 3-A — kolejność orientacyjna",
-          "list": [
-            "Wejście do dolnego, królewskiego sektora Circuito 3.",
-            "Przejście obok tarasów i zabudowy związanej z elitą.",
-            "Kontrola wejścia na Waynapicchu.",
-            "Strome podejście kamiennymi schodami; miejscami ekspozycja i wąskie przejścia.",
-            "Punkty widokowe na całe stanowisko i zakole Urubamby.",
-            "Zejście tą samą górą i dokończenie wyznaczonego odcinka Circuito 3."
-          ]
-        },
-        {
-          "h": "Na co patrzeć na Route 3",
-          "p": "W dolnej części skupcie się na jakości kamieniarki, wodnych kanałach, relacji budynków z naturalną skałą i bliskości Waynapicchu. Trasa królewska nie prowadzi do wszystkich klasycznych punktów górnego sektora, dlatego druga Ruta 2 jest tak cenna."
-        },
-        {
-          "h": "Waynapicchu",
-          "p": "Góra dominuje nad klasycznym widokiem Machu Picchu. Schody są strome, a wilgoć może zwiększać poślizg. Najważniejszy nie jest rekord czasu, lecz bezpieczne tempo. Z góry widać urbanistykę stanowiska, tarasy i dramatyczne położenie między doliną a graniami."
-        },
-        {
-          "gallery": [
-            [
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%20Peru.jpg?width=1600",
-              "Klasyczny widok na Machu Picchu"
-            ],
-            [
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Huayna%20Picchu%2C%20Peru.jpg?width=1600",
-              "Waynapicchu nad stanowiskiem"
-            ]
-          ]
-        },
-        {
-          "h": "Ruta 2-A i 2-B",
-          "p": "Obie należą do Circuito 2 — Machupicchu Clásico. 2-A daje wyższy klasyczny punkt widokowy, 2-B zaczyna się z niższego tarasu. Jeśli godzina jest taka sama, wybierzcie 2-A. Wcześniejsza 2-B jest jednak lepsza niż późniejsza 2-A, bo daje większy margines przed pociągiem."
-        },
-        {
-          "h": "Najważniejsze miejsca na Circuito 2",
-          "list": [
-            "Tarasy rolnicze i punkt klasycznej panoramy.",
-            "Sektor miejski i główny plac.",
-            "Świątynia Słońca oglądana z dostępnej części trasy.",
-            "Święta Skała lub okolice, zależnie od bieżącego przebiegu trasy i kontroli ruchu.",
-            "Świątynia Kondora lub dolne sektory, jeśli obejmuje je aktualne prowadzenie 2-A/2-B."
-          ]
-        },
-        {
-          "h": "Plan dnia",
-          "list": [
-            "05:00 pobudka i porządne śniadanie.",
-            "05:30–05:50 wyjście do kolejki autobusowej.",
-            "około 06:00–06:30 przejazd w górę.",
-            "07:00 wejście Ruta 3-A.",
-            "07:30–10:30 orientacyjnie Waynapicchu.",
-            "około 11:15–12:00 wyjście i przerwa przy bramie.",
-            "13:00 lub 14:00 drugie wejście Ruta 2.",
-            "Po wyjściu autobus do Aguas, odbiór bagażu i pociąg 20:50 jako wariant bezpieczny."
-          ]
-        }
-      ]
-    },
-    {
-      "id": "fauna",
-      "title": "Atlas zwierząt, które możecie spotkać",
-      "kicker": "AMAZONIA",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Ara%20ararauna.jpg?width=1400",
-      "intro": "To nie jest lista obietnic. W dzikiej przyrodzie niczego nie da się zagwarantować. Atlas skupia się na gatunkach wymienianych przez Curassow i typowych dla regionu Tamshiyacu–Tahuayo.",
-      "blocks": [
-        {
-          "animals": [
-            [
-              "Różowy delfin rzeczny",
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Amazon%20river%20dolphin.jpg?width=1400",
-              "Inia geoffrensis",
-              "Najczęściej wypatrywany przy spokojnej powierzchni rzek i jezior. Wynurza się krótko, dlatego patrzcie przed łódź, nie tylko dokładnie obok."
-            ],
-            [
-              "Leniwiec brunatnogardły",
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Bradypus%20variegatus.jpg?width=1400",
-              "Bradypus variegatus",
-              "Szukajcie nieruchomej, zaokrąglonej sylwetki wysoko w koronie. Często łatwiej zauważyć go, gdy przewodnik wskaże konkretną gałąź."
-            ],
-            [
-              "Kapibara",
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Hydrochoerus%20hydrochaeris.jpg?width=1400",
-              "Hydrochoerus hydrochaeris",
-              "Największy gryzoń świata. Największa szansa o świcie, zmierzchu i podczas nocnych przejazdów wzdłuż brzegów."
-            ],
-            [
-              "Kajman okularowy",
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Caiman%20crocodilus.jpg?width=1400",
-              "Caiman crocodilus",
-              "Nocą przewodnicy lokalizują je po odbiciu światła w oczach. Nie wychylajcie rąk z łodzi i stosujcie się do instrukcji."
-            ],
-            [
-              "Ara niebiesko-żółta",
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Ara%20ararauna.jpg?width=1400",
-              "Ara ararauna",
-              "Zwykle najpierw ją słychać. Patrzcie wysoko i daleko; pary lub grupy przelatują nad rzeką i koronami drzew."
-            ],
-            [
-              "Hoatzin",
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Opisthocomus%20hoazin.jpg?width=1400",
-              "Opisthocomus hoazin",
-              "Duży ptak związany z roślinnością nad wodą. Ma charakterystyczny czub i głośne odgłosy; Curassow wymienia go jako jeden z celów obserwacji."
-            ],
-            [
-              "Paujil amazoński",
-              "https://commons.wikimedia.org/wiki/Special:FilePath/Crax%20globulosa.jpg?width=1400",
-              "Crax globulosa",
-              "Symbol lodge, gatunek zagrożony. Curassow opisuje działania ochronne i regularne obserwacje w okolicy Yanayacu."
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "id": "flora",
-      "title": "Flora Amazonii",
-      "kicker": "LAS PIERWOTNY",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Victoria%20amazonica.jpg?width=1400",
-      "intro": "W lesie łatwo koncentrować się wyłącznie na zwierzętach, ale to rośliny budują cały system. Przewodnik terenowy powinien zwracać uwagę na warstwy lasu, zależność od wody i tradycyjne zastosowania roślin.",
-      "blocks": [
-        {
-          "h": "Victoria amazonica",
-          "p": "Gigantyczne liście unoszą się na wodzie dzięki systemowi żeber. Kwiaty otwierają się etapami i zmieniają barwę. Lodge planuje wizytę na jeziorach, gdzie możecie zobaczyć te rośliny z łodzi."
-        },
-        {
-          "h": "Ceiba / kapok",
-          "p": "Jedno z najbardziej monumentalnych drzew regionu. Rozległe korzenie podporowe stabilizują pień w płytkiej glebie. Curassow wskazuje ceiby jako ważny element spacerów po pierwotnym lesie."
-        },
-        {
-          "h": "Sangre de grado",
-          "p": "Czerwonawy lateks z drzewa Croton lechleri jest tradycyjnie używany miejscowo na skórę. W przewodniku traktujemy zastosowania etnobotaniczne jako wiedzę kulturową, nie jako poradę medyczną."
-        },
-        {
-          "h": "Liany i epifity",
-          "p": "Liany wykorzystują drzewa jako podpory, a epifity rosną na gałęziach bez zakorzenienia w ziemi. Zwróćcie uwagę, jak konkurencja o światło kształtuje pionową strukturę lasu."
-        }
-      ]
-    },
-    {
-      "id": "food",
-      "title": "Jedzenie Peru: co zamawiać i czego oczekiwać",
-      "kicker": "KUCHNIA",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Miraflores%2C%20Lima%2C%20Peru.jpg?width=1600",
-      "intro": "Peru ma kilka odrębnych tradycji kulinarnych: nadmorską, andyjską i amazońską. Wasza trasa pozwala spróbować wszystkich trzech.",
-      "blocks": [
-        {
-          "h": "Lima",
-          "list": [
-            "Ceviche — surowa ryba marynowana krótko w limonce, z cebulą, chili, kukurydzą i batatem.",
-            "Causa limeña — warstwy ziemniaków z limonką i ají amarillo, często z kurczakiem lub tuńczykiem.",
-            "Lomo saltado — wołowina smażona z cebulą i pomidorem, łącząca wpływy chińsko-peruwiańskie.",
-            "Anticuchos — szaszłyki, klasycznie z serca wołowego; warto wiedzieć, zanim zamówicie."
-          ]
-        },
-        {
-          "h": "Andy i Cusco",
-          "list": [
-            "Chiri uchu — tradycyjne danie świąteczne Cusco z wieloma składnikami.",
-            "Pachamanca — mięso i warzywa pieczone w ziemnym piecu.",
-            "Cuy — świnka morska; ważne kulturowo, ale nie każdy będzie chciał próbować.",
-            "Zupy z quinoa, kukurydza choclo, setki odmian ziemniaków i lokalne sery."
-          ]
-        },
-        {
-          "h": "Amazonia i Iquitos",
-          "list": [
-            "Juane — ryż z mięsem zawinięty w liście bijao.",
-            "Tacacho con cecina — puree z pieczonych bananów z suszoną lub wędzoną wieprzowiną.",
-            "Paiche — ogromna ryba amazońska.",
-            "Soki z camu camu, cocony, aguaje i innych lokalnych owoców."
-          ]
-        },
-        {
-          "h": "Bezpieczeństwo jedzenia",
-          "p": "Wybierajcie miejsca z dużą rotacją, świeżo przygotowywanym jedzeniem i czystą wodą. W Amazonii lodge zapewnia posiłki i oczyszczoną wodę. W Iquitos po pięciu dniach dżungli lepiej zacząć od prostego, dobrze ugotowanego jedzenia."
-        }
-      ]
-    },
-    {
-      "id": "plan",
-      "title": "Plan dzień po dniu",
-      "kicker": "OPERACYJNIE",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%20Peru.jpg?width=1800",
-      "intro": "To publiczna wersja planu bez kodów, adresów i prywatnych kontaktów. Wrażliwe informacje znajdują się w prywatnym sejfie Notion.",
-      "blocks": [
-        {
-          "timeline": [
-            [
-              "04–06.09",
-              "Lima",
-              "Przyloty, sen i pełna regeneracja Weroniki po długiej podróży."
-            ],
-            [
-              "07.09",
-              "Lima → Iquitos → Curassow",
-              "Lot 07:15–09:05 i odbiór przez lodge na lotnisku."
-            ],
-            [
-              "07–12.09",
-              "Curassow Amazon Lodge",
-              "Program 6D/5N, w tym camping w dżungli."
-            ],
-            [
-              "12–14.09",
-              "Iquitos",
-              "Reset, pranie, promenada i spokojne jedzenie."
-            ],
-            [
-              "14–17.09",
-              "Cusco",
-              "Przylot 12:50, dwa spokojne dni aklimatyzacji."
-            ],
-            [
-              "17.09",
-              "Sacred Valley",
-              "TaxiDatum: Pisac, targ, Moray, Maras, Chinchero, koniec w Ollantaytambo."
-            ],
-            [
-              "18.09",
-              "Ollantaytambo",
-              "Ruiny i stare miasto bez pośpiechu."
-            ],
-            [
-              "19.09",
-              "Ollantaytambo → Aguas",
-              "Pociąg 12:55, po przyjeździe próba zakupu Ruta 2."
-            ],
-            [
-              "20.09",
-              "Machu Picchu",
-              "07:00 Ruta 3-A Waynapicchu; opcjonalnie Ruta 2 o 13:00/14:00; pociąg 20:50."
-            ],
-            [
-              "21–26.09",
-              "Lima",
-              "Lot z Cusco i spokojna końcówka podróży."
-            ]
-          ]
-        }
-      ]
-    },
-    {
-      "id": "sources",
-      "title": "Źródła i licencje zdjęć",
-      "kicker": "TRANSPARENTNOŚĆ",
-      "hero": "https://commons.wikimedia.org/wiki/Special:FilePath/Machu%20Picchu%2C%20Peru.jpg?width=1800",
-      "intro": "Przewodnik odróżnia ustalenia źródłowe od hipotez. Opisy operacyjne wymagają ponownej weryfikacji przed wyjazdem, szczególnie procedury Machu Picchu, godziny sprzedaży biletów, rozkłady i ceny.",
-      "blocks": [
-        {
-          "h": "Najważniejsze źródła",
-          "list": [
-            "Oficjalny plan wyprawy Peru 2026, aktualizacja 19.07.2026.",
-            "Ministerio de Cultura del Perú / machupicchu.gob.pe — aktualne circuitos y rutas.",
-            "Curassow Amazon Lodge — oficjalne strony lodge, programu, excursions, wildlife, packing i terms.",
-            "UNESCO World Heritage Centre — Historic Sanctuary of Machu Picchu oraz City of Cuzco.",
-            "Publikacje archeologiczne i opracowania muzealne dla historii Inków i stanowisk Sacred Valley."
-          ]
-        },
-        {
-          "h": "Zdjęcia",
-          "p": "Zdjęcia Curassow pochodzą z oficjalnej strony lodge i są użyte na podstawie zgody Martina. Pozostałe fotografie są ładowane z Wikimedia Commons przez Special:FilePath. Dokładny autor i licencja są dostępne po przejściu do strony pliku w Commons; przed publicznym szerszym rozpowszechnianiem warto zachować pełną tabelę kredytów."
-        },
-        {
-          "h": "Offline",
-          "p": "Po pierwszym pełnym otwarciu aplikacja próbuje zapisać tekst, pliki interfejsu i oglądane zdjęcia w pamięci podręcznej urządzenia. Ponieważ część realnych fotografii pochodzi z zewnętrznych serwerów, pierwsze zapisanie wymaga internetu. Po zapisaniu obrazy powinny być dostępne offline, o ile system iOS nie usunie pamięci witryny."
-        }
-      ]
-    }
+  status: {
+    done: { label: "Zrobione", tone: "green" },
+    confirmed: { label: "Potwierdzone", tone: "green" },
+    buy: { label: "Do rezerwacji", tone: "amber" },
+    open: { label: "Decyzja otwarta", tone: "red" },
+    onsite: { label: "Na miejscu", tone: "blue" },
+    planned: { label: "Plan ustalony", tone: "slate" }
+  },
+  route: [
+    ["Lima", "04–07.09"],
+    ["Iquitos", "07.09"],
+    ["Curassow", "07–12.09"],
+    ["Iquitos", "12–14.09"],
+    ["Cusco", "14–17.09"],
+    ["Sacred Valley", "17.09"],
+    ["Ollantaytambo", "17–19.09"],
+    ["Aguas Calientes", "19–20.09"],
+    ["Machu Picchu", "20.09"],
+    ["Lima", "21–26.09"]
   ],
-  "nav": [
-    [
-      "home",
-      "Start"
-    ],
-    [
-      "plan",
-      "Plan"
-    ],
-    [
-      "peru",
-      "Historia Peru"
-    ],
-    [
-      "amazon",
-      "Amazonia"
-    ],
-    [
-      "iquitos",
-      "Iquitos"
-    ],
-    [
-      "cusco",
-      "Cusco"
-    ],
-    [
-      "sacred",
-      "Sacred Valley"
-    ],
-    [
-      "ollanta",
-      "Ollantaytambo"
-    ],
-    [
-      "machu",
-      "Machu Picchu"
-    ],
-    [
-      "fauna",
-      "Fauna"
-    ],
-    [
-      "flora",
-      "Flora"
-    ],
-    [
-      "food",
-      "Jedzenie"
-    ],
-    [
-      "sources",
-      "Źródła"
-    ]
+  bookings: [
+    { id:"lima-start", name:"Lima — pierwszy nocleg", date:"04–07.09", detail:"Airbnb w Miraflores dostępne przed nocnymi i porannymi przylotami.", status:"done", supplier:"Airbnb", payment:"paid", settlement:"pending" },
+    { id:"lim-iqt", name:"Lot Lima → Iquitos", date:"07.09 · 07:15–09:05", detail:"Star Peru. Bagaż nadawany i podręczny są uwzględnione.", status:"done", supplier:"Star Peru", payment:"paid", settlement:"pending" },
+    { id:"curassow", name:"Curassow Amazon Lodge", date:"07–12.09 · 6D/5N", detail:"Odbiór z lotniska w Iquitos. Po wyprawie odstawienie pod nocleg około 16:00.", status:"confirmed", supplier:"Curassow Amazon Lodge", payment:"partial", settlement:"pending" },
+    { id:"iquitos", name:"Iquitos — nocleg po dżungli", date:"12–14.09", detail:"Airbnb na prysznic, pranie, przepakowanie i spokojny dzień po Amazonii.", status:"done", supplier:"Airbnb", payment:"paid", settlement:"pending" },
+    { id:"iqt-cuz", name:"Lot Iquitos → Lima → Cusco", date:"14.09 · 07:20–12:50", detail:"SKY, jedna rezerwacja. W Iquitos sprawdzić oznaczenie bagażu do CUZ.", status:"done", supplier:"SKY", payment:"paid", settlement:"pending" },
+    { id:"machu3a", name:"Machu Picchu — Ruta 3-A", date:"20.09 · 07:00", detail:"Circuito 3 — Realeza + Montaña Waynapicchu, dla całej trójki.", status:"done", supplier:"Ministerio de Cultura", payment:"paid", settlement:"pending" },
+    { id:"train-out", name:"Pociąg Ollantaytambo → Aguas", date:"19.09 · 12:55", detail:"PeruRail Expedition. Na stacji najpóźniej o 12:25.", status:"done", supplier:"PeruRail", payment:"paid", settlement:"pending" },
+    { id:"cusco-hotel", name:"Hotel w Cusco", date:"14–17.09", detail:"Spokojna lokalizacja, bez stromego podejścia, dobre ogrzewanie i ciepła woda.", status:"buy", supplier:"Do wyboru", payment:"unpaid", settlement:"none" },
+    { id:"taxidatum", name:"Prywatny TaxiDatum — Sacred Valley", date:"17.09", detail:"Cusco → Pisac Ruins → Pisac Market → Moray → Maras → Chinchero → Ollantaytambo.", status:"buy", supplier:"TaxiDatum", payment:"unpaid", settlement:"none" },
+    { id:"olla-hotel", name:"Hotel w Ollantaytambo", date:"17–19.09", detail:"Musi przechować duże plecaki od 19.09 do wieczora 20.09.", status:"buy", supplier:"Do wyboru", payment:"unpaid", settlement:"none" },
+    { id:"olla-buffer", name:"Anulowalna noc w Ollantaytambo", date:"20–21.09", detail:"Zabezpieczenie pod rekomendowany pociąg o 20:50.", status:"buy", supplier:"Do wyboru", payment:"unpaid", settlement:"none" },
+    { id:"aguas-hotel", name:"Hotel w Aguas Calientes", date:"19–20.09", detail:"Cicho, blisko autobusów i stacji; przechowanie małych plecaków po wymeldowaniu.", status:"buy", supplier:"Do wyboru", payment:"unpaid", settlement:"none" },
+    { id:"train-back", name:"Pociąg Aguas → Ollantaytambo", date:"20.09", detail:"18:20 jest szybszy, ale ryzykowny. 20:50 jest wariantem rekomendowanym.", status:"open", supplier:"PeruRail / Inca Rail", payment:"unpaid", settlement:"none" },
+    { id:"cuz-lim", name:"Lot Cusco → Lima", date:"21.09", detail:"Przy noclegu w Ollantaytambo wybierać popołudnie, najlepiej nie wcześniej niż 14:00–15:00.", status:"buy", supplier:"Do wyboru", payment:"unpaid", settlement:"none" },
+    { id:"lima-end", name:"Końcowy nocleg w Limie", date:"21–26.09", detail:"Miraflores lub Barranco. Daniel i Weronika do 25.09, Kuba do 26.09.", status:"buy", supplier:"Do wyboru", payment:"unpaid", settlement:"none" }
   ],
-  "privateNotion": "https://app.notion.com/p/3a247aa842388115985ec9f0bacf2ae6"
+  itinerary: [
+    { date:"04.09", place:"Lima", title:"Start rezerwacji mieszkania", status:"done", sleep:"Airbnb Lima", transport:"—", body:"Mieszkanie jest dostępne już od 04.09, dzięki czemu można wejść bez czekania po nocnych i porannych przylotach." },
+    { date:"05.09", place:"Lima", title:"Przylot Kuby i Daniela", status:"confirmed", sleep:"Airbnb Lima", transport:"Lotnisko → Miraflores: większy Uber/Cabify lub oficjalna taxi", body:"Kuba przylatuje o 01:45, Daniel o 04:25. Po bagażu przejazd do Miraflores, sen, jedzenie i zero presji na zwiedzanie." },
+    { date:"06.09", place:"Lima", title:"Przylot Weroniki i regeneracja", status:"confirmed", sleep:"Airbnb Lima", transport:"Lotnisko → Miraflores", body:"Weronika przylatuje o 06:30 po około 30 godzinach podróży. Cały dzień jest przeznaczony na regenerację. Miraflores lub Barranco tylko przy realnej energii." },
+    { date:"07.09", place:"Lima → Iquitos → Amazonia", title:"Lot i start Curassow", status:"confirmed", sleep:"Curassow Amazon Lodge", transport:"Wyjazd z Airbnb najpóźniej 04:00; lot 07:15–09:05", body:"Zamówić XL/SUV/van około 03:40–03:45. Na lotnisku celować w 04:45–05:00. Po odebraniu plecaków spotkanie z ekipą Curassow i transfer do lodge." },
+    { date:"08.09", place:"Amazonia", title:"Curassow — dzień terenowy", status:"confirmed", sleep:"Curassow", transport:"Łódź / canoe / pieszo", body:"Program zależny od pogody, poziomu wody i aktywności zwierząt. Priorytetem jest praca z prywatnym przewodnikiem, nie sztywny rozkład godzin." },
+    { date:"09.09", place:"Amazonia", title:"Curassow — dzień terenowy", status:"confirmed", sleep:"Curassow", transport:"Łódź / canoe / pieszo", body:"Wczesne wyjścia, obserwacja zwierząt, eksploracja rzek i lasu. Konkretna kolejność może zostać zmieniona przez przewodnika." },
+    { date:"10.09", place:"Amazonia", title:"Curassow — dzień terenowy", status:"confirmed", sleep:"Curassow", transport:"Łódź / canoe / pieszo", body:"Kontynuacja programu, możliwy pierwotny las, survival, nocne wyjście lub przygotowanie do campingu — zależnie od programu operacyjnego." },
+    { date:"11.09", place:"Amazonia", title:"Curassow — camping / noc terenowa", status:"confirmed", sleep:"Curassow lub obóz", transport:"Pieszo / łódź", body:"Najbardziej terenowa część programu. Ostateczny przebieg zależy od warunków i decyzji przewodnika." },
+    { date:"12.09", place:"Amazonia → Iquitos", title:"Koniec wyprawy i reset", status:"confirmed", sleep:"Airbnb Iquitos", transport:"Curassow odstawia pod nocleg około 16:00", body:"Prysznic, normalne jedzenie, pranie i odpoczynek. Bez dalszego programu obowiązkowego." },
+    { date:"13.09", place:"Iquitos", title:"Spokojny dzień po dżungli", status:"planned", sleep:"Airbnb Iquitos", transport:"Pieszo / krótka taxi", body:"Pranie, przepakowanie, promenada i centrum, spokojne jedzenie. Bez ciężkiego zwiedzania." },
+    { date:"14.09", place:"Iquitos → Lima → Cusco", title:"Lot i początek aklimatyzacji", status:"buy", sleep:"Cusco — do rezerwacji", transport:"Taxi 04:40; lot 07:20; przylot Cusco 12:50", body:"Wyjazd około 04:45, lotnisko około 05:15. Przy nadawaniu upewnić się, że bagaż jest oznaczony do CUZ. Po przylocie tylko hotel, jedzenie i odpoczynek." },
+    { date:"15.09", place:"Cusco", title:"Spokojne centrum", status:"planned", sleep:"Cusco", transport:"Pieszo / taxi przy zmęczeniu", body:"Plaza de Armas, San Blas, Mercado San Pedro, dużo przerw i wolne tempo. Bez ścigania listy atrakcji." },
+    { date:"16.09", place:"Cusco", title:"Drugi dzień aklimatyzacji", status:"planned", sleep:"Cusco", transport:"Pieszo / taxi", body:"Lekki program dopasowany do samopoczucia. Bez całodniowego forsowania organizmu na wysokości." },
+    { date:"17.09", place:"Sacred Valley", title:"Prywatny przejazd do Ollantaytambo", status:"buy", sleep:"Ollantaytambo — do rezerwacji", transport:"TaxiDatum — prywatny samochód", body:"Plan: Pisac Ruins → Pisac Market → Moray → Maras/Salineras → Chinchero → Ollantaytambo. Kolejność i realną wykonalność potwierdzić z kierowcą." },
+    { date:"18.09", place:"Ollantaytambo", title:"Ruiny i stare miasteczko", status:"planned", sleep:"Ollantaytambo", transport:"Pieszo", body:"Ruiny, zachowany układ ulic, widoki, kawa i spokojny dzień. Bez gonienia przed Machu Picchu." },
+    { date:"19.09", place:"Ollantaytambo → Aguas Calientes", title:"Pociąg i próba zakupu Ruty 2", status:"onsite", sleep:"Aguas Calientes — do rezerwacji", transport:"PeruRail 12:55–około 14:25", body:"Duże plecaki zostają w hotelu w Ollantaytambo. Na stacji o 12:25. Po przyjeździe szybkie zostawienie małych plecaków i kolejka do Centro Cultural z paszportami." },
+    { date:"20.09", place:"Machu Picchu", title:"Waynapicchu + możliwa Ruta 2", status:"open", sleep:"Ollantaytambo lub Cusco", transport:"Bus Aguas ↔ Machu + pociąg powrotny", body:"Wejście Ruta 3-A o 07:00. Druga Ruta 2 najlepiej o 13:00, następnie 14:00. Pociąg 20:50 jest rekomendowany, ponieważ zabezpiecza opóźnienia i późniejsze wejście." },
+    { date:"21.09", place:"Ollantaytambo / Cusco → Lima", title:"Transfer i lot", status:"buy", sleep:"Lima — do rezerwacji", transport:"Taxi na lotnisko + lot do Limy", body:"Bez zwiedzania. Przy noclegu w Ollantaytambo taxi bezpośrednio na lotnisko i lot po południu. Przy noclegu w Cusco można lecieć wcześniej." },
+    { date:"22.09", place:"Lima", title:"Pełny dzień odpoczynku", status:"planned", sleep:"Lima", transport:"Pieszo / taxi", body:"Jedzenie, spacer, ewentualnie basen lub rooftop. Żadnego obowiązkowego programu." },
+    { date:"23.09", place:"Lima", title:"Miraflores lub Barranco", status:"planned", sleep:"Lima", transport:"Pieszo / taxi", body:"Luźny dzień: spacer, dobre jedzenie albo całkowity odpoczynek." },
+    { date:"24.09", place:"Lima", title:"Ostatni wspólny pełny dzień", status:"planned", sleep:"Lima", transport:"Pieszo / taxi", body:"Bez presji. Pakowanie i wspólna kolacja." },
+    { date:"25.09", place:"Lima", title:"Wyloty Daniela i Weroniki", status:"open", sleep:"Lima — tylko Kuba", transport:"Transfery zależne od końcowego hotelu", body:"Daniel wylot 09:40, Weronika 12:00. Kuba zostaje jedną dodatkową noc." },
+    { date:"26.09", place:"Lima → Europa", title:"Wylot Kuby", status:"planned", sleep:"—", transport:"Transfer na lotnisko", body:"Wylot o 09:25. Godzinę wyjazdu ustalić po wyborze końcowego hotelu i ponownym sprawdzeniu warunków drogowych." }
+  ],
+  tasks: [
+    { id:"t1", title:"Zarezerwować hotel w Cusco", when:"14–17.09", note:"Spokojna lokalizacja, bez stromego podejścia, dobra ciepła woda i anulowanie.", status:"buy" },
+    { id:"t2", title:"Zarezerwować hotel w Ollantaytambo", when:"17–19.09", note:"Musi przechować duże plecaki do wieczora 20.09.", status:"buy" },
+    { id:"t3", title:"Zarezerwować anulowalną noc w Ollantaytambo", when:"20–21.09", note:"Zabezpieczenie pod pociąg 20:50.", status:"buy" },
+    { id:"t4", title:"Zarezerwować nocleg w Aguas Calientes", when:"19–20.09", note:"Blisko autobusów i stacji; przechowanie bagaży po wymeldowaniu.", status:"buy" },
+    { id:"t5", title:"Zarezerwować TaxiDatum na Sacred Valley", when:"17.09", note:"Pisac Ruins, Pisac Market, Moray, Maras, Chinchero, zakończenie w Ollantaytambo.", status:"buy" },
+    { id:"t6", title:"Kupić lot Cusco → Lima", when:"21.09", note:"Przy starcie z Ollantaytambo najlepiej nie wcześniej niż 14:00–15:00.", status:"buy" },
+    { id:"t7", title:"Zarezerwować końcową Limę", when:"21–26.09", note:"Daniel i Weronika do 25.09; Kuba do 26.09.", status:"buy" },
+    { id:"t8", title:"Wybrać godzinę pociągu powrotnego", when:"20.09", note:"18:20 tylko przy odpowiednio wczesnej Rucie 2 i sprawnym zjeździe; 20:50 rekomendowany.", status:"open" },
+    { id:"t9", title:"Kupić pociąg Aguas → Ollantaytambo", when:"20.09", note:"Nie kupować do Cusco, ponieważ duże plecaki zostają w Ollantaytambo.", status:"buy" },
+    { id:"t10", title:"Ustalić taxi Ollantaytambo → Cusco / lotnisko", when:"20 lub 21.09", note:"Zależne od wybranego pociągu i noclegu.", status:"open" },
+    { id:"t11", title:"Kupić autobus Aguas ↔ Machu Picchu", when:"Do 19.09", note:"Online kilka dni wcześniej albo po przyjeździe.", status:"buy" },
+    { id:"t12", title:"Spróbować kupić Rutę 2", when:"19.09 na miejscu", note:"Priorytet: 13:00, potem 14:00. 2A przed 2B tylko przy tej samej godzinie.", status:"onsite" },
+    { id:"t13", title:"Opłacić pozostałe saldo Curassow", when:"Przed wyprawą w Iquitos", note:"Depozyt jest opłacony; reszta pozostaje do zapłaty.", status:"buy" },
+    { id:"t14", title:"Ustalić końcowe transfery w Limie", when:"25–26.09", note:"Dopiero po wyborze końcowego hotelu.", status:"open" }
+  ],
+  machu19: [
+    ["12:25", "Stacja Ollantaytambo", "Stawić się na stacji. Duże plecaki zostają w hotelu; do Aguas jadą tylko małe plecaki."],
+    ["12:55–14:25", "PeruRail Expedition", "Kupiony przejazd do Machu Picchu Pueblo."],
+    ["14:25–14:45", "Szybki check-in", "Zostawić bagaże. Nie planować obiadu ani spaceru."],
+    ["około 14:45", "Kolejka do Centro Cultural", "Cała trójka z oryginalnymi paszportami. Procedurę i godziny sprawdzić ponownie przed podróżą."],
+    ["od 15:00", "Zakup Ruty 2", "Kolejność próśb: 2A 13:00 → 2B 13:00 → 2A/2B 14:00 → 15:00 awaryjnie."],
+    ["po zakupie", "Hotel i przygotowanie", "Bus, mały plecak zgodny z limitem, dokumenty, woda, lekkie warstwy i porządne śniadanie."]
+  ],
+  machu20: [
+    ["05:00–05:25", "Pobudka i śniadanie", "Zjeść porządnie. Zabrać dokumenty, wodę, lekką kurtkę i mały plecak."],
+    ["05:30–05:50", "Wyjście do autobusów", "Nie zostawiać tego na ostatnią chwilę. Bilet autobusowy mieć wcześniej."],
+    ["około 06:00–06:30", "Autobus w górę", "Przejazd zwykle około 25–30 minut. Po przyjeździe toaleta i kolejka."],
+    ["07:00", "Wejście Ruta 3-A", "Circuito 3 — Realeza, Montaña Waynapicchu. Cała trójka wchodzi razem."],
+    ["07:30–10:30", "Waynapicchu", "Podejście, widoki i zejście. Bez forsowania tempa kosztem bezpieczeństwa."],
+    ["10:30–11:30/12:00", "Dokończenie Ruty 3-A", "Realny cel wyjścia około 11:15–11:45; 12:00 nadal mieści się w planie."],
+    ["11:15–12:40", "Przerwa poza bramkami", "Toaleta, odpoczynek i szybkie jedzenie przy wejściu. Nie zjeżdżać do Aguas przed wejściem 13:00."],
+    ["13:00 lub 14:00", "Drugie wejście — Ruta 2", "13:00 najlepsze. 14:00 nadal dobre, ale praktycznie oznacza pociąg 20:50."],
+    ["po wyjściu", "Autobus do Aguas", "Kolejka i zjazd mogą zająć 40–70 minut. Odebrać bagaże, zjeść i być na stacji minimum 30 minut wcześniej."],
+    ["18:20 lub 20:50", "Pociąg do Ollantaytambo", "18:20 szybszy, lecz ryzykowny. 20:50 rekomendowany i odporniejszy na opóźnienia."]
+  ],
+  scenarios: [
+    { name:"Brak Ruty 2", action:"Po Waynapicchu spokojny lunch w Aguas. Pociąg 18:20 jest łatwy, ale można zachować 20:50 dla pełnego spokoju." },
+    { name:"Ruta 2 o 13:00", action:"18:20 jest możliwy bez długiego obiadu i przy sprawnym autobusie. 20:50 eliminuje presję." },
+    { name:"Ruta 2 o 14:00 lub 15:00", action:"Nie planować pociągu 18:20. Brać 20:50 i nocleg w Ollantaytambo." },
+    { name:"Waynapicchu kończy się około 12:00", action:"Ruta 2 o 13:00 nadal może się udać, ale przerwa będzie bardzo krótka. Jedzenie przy wejściu." },
+    { name:"Długi zjazd autobusem", action:"Wariant 20:50 pochłania większość problemów. Na 18:20 nie liczyć, jeżeli około 17:00 nie jesteście już w Aguas." }
+  ],
+  payments: [
+    { name:"Airbnb Lima 04–07.09", supplier:"Zapłacone", payer:"Daniel", settlement:"Do rozliczenia" },
+    { name:"Lot Lima → Iquitos", supplier:"Zapłacone", payer:"Kuba", settlement:"Do rozliczenia" },
+    { name:"Depozyt Curassow", supplier:"Zapłacone", payer:"Kuba", settlement:"Do rozliczenia" },
+    { name:"Pozostałe saldo Curassow", supplier:"Niezapłacone", payer:"—", settlement:"Do rozliczenia po płatności" },
+    { name:"Airbnb Iquitos 12–14.09", supplier:"Zapłacone", payer:"Daniel", settlement:"Do rozliczenia" },
+    { name:"Lot Iquitos → Lima → Cusco", supplier:"Zapłacone", payer:"Kuba", settlement:"Do rozliczenia" },
+    { name:"Machu Picchu — Ruta 3-A", supplier:"Zapłacone", payer:"Daniel", settlement:"Do rozliczenia" },
+    { name:"Pociąg Ollantaytambo → Aguas", supplier:"Zapłacone", payer:"Kuba", settlement:"Do rozliczenia" },
+    { name:"Hotele Cusco / Ollantaytambo / Aguas / Lima", supplier:"Niezapłacone", payer:"—", settlement:"Do rozliczenia po rezerwacji" },
+    { name:"TaxiDatum Sacred Valley", supplier:"Niezapłacone", payer:"—", settlement:"Do rozliczenia po płatności" },
+    { name:"Pociąg Aguas → Ollantaytambo", supplier:"Niezapłacone", payer:"—", settlement:"Do rozliczenia po zakupie" },
+    { name:"Lot Cusco → Lima", supplier:"Niezapłacone", payer:"—", settlement:"Do rozliczenia po zakupie" }
+  ],
+  chapters: [
+    { id:"amazon", title:"Amazonia i Curassow", scope:"Ekologia lasu, rzeki, program 6D/5N, camping, fauna, bezpieczeństwo i obserwacja zwierząt.", stage:"Etap 2" },
+    { id:"iquitos", title:"Iquitos i epoka kauczuku", scope:"Miasto, historia kauczuku, przemoc kolonialna, architektura i spacer po centrum.", stage:"Etap 2" },
+    { id:"cusco", title:"Cusco", scope:"Tawantinsuyu, kolonialne nakładanie miasta, przewodnik terenowy i aklimatyzacja.", stage:"Etap 2" },
+    { id:"sacred", title:"Sacred Valley", scope:"Pisac, Moray, Maras, Chinchero oraz logika całego dnia TaxiDatum.", stage:"Etap 2" },
+    { id:"olla", title:"Ollantaytambo", scope:"Twierdza, miasto, tarasy, Świątynia Słońca, spichlerze i spacer krok po kroku.", stage:"Etap 2" },
+    { id:"machu", title:"Machu Picchu i Waynapicchu", scope:"Pełna historia, archeologia, Ruta 3-A, Ruta 2-A/2-B, budowle, hipotezy i przewodnik fotograficzny.", stage:"Etap 2" },
+    { id:"wildlife", title:"Fauna Amazonii", scope:"Rozbudowane profile gatunków, tropy, zachowanie, szanse spotkania i fotografowanie.", stage:"Etap 3" },
+    { id:"flora", title:"Flora Amazonii i Andów", scope:"Drzewa, palmy, rośliny wodne, epifity, rośliny użytkowe i ich ekologia.", stage:"Etap 3" },
+    { id:"food", title:"Jedzenie i napoje", scope:"Co zamawiać, jak smakuje, pochodzenie, bezpieczeństwo i prawdziwe zdjęcia dań.", stage:"Etap 3" }
+  ]
 };
