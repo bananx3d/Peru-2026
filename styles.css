@@ -396,3 +396,164 @@ html[lang="es"] .real-photo-thumb.photo-failed:after{content:'La foto aparecerá
   .home-hero{min-height:215px}.home-hero h1{font-size:49px}.today-card-top{display:grid}.today-card-top .status{justify-self:start}.prep-stats{grid-template-columns:1fr 1fr}.quick-grid{grid-template-columns:1fr}.quick-card{grid-template-columns:38px 1fr auto}.quick-card>b{display:block}.destination-card{grid-template-columns:1fr}.destination-image{min-height:155px}.destination-body{min-height:180px}.destination-actions{grid-template-columns:1fr 1fr}.destination-actions:has(button:only-child){grid-template-columns:1fr}.long-read-list button{grid-template-columns:1fr auto}.ux-topbar .topbar-sub{max-width:145px}.topbar-title{max-width:220px}.language-quick{padding:16px}
 }
 @media print{.ux-sidebar,.ux-mobile-dock,.ux-topbar{display:none!important}.ux-main{margin:0}.ux-main>.page{padding:20px}}
+
+/* ========================================================================== 
+   v18 DAY BRIEFS + MACHU DEEP CLEAN
+   Smaller, exact-match photography; one focused page per day; no endless Machu page.
+   ========================================================================== */
+
+/* Day index */
+.plan-page{display:grid;gap:17px}
+.plan-heading{margin-bottom:0}
+.compact-filters{margin:0;display:flex;gap:7px;overflow-x:auto;padding:2px 1px 5px;scrollbar-width:none}
+.compact-filters::-webkit-scrollbar{display:none}
+.compact-filters .filter{flex:0 0 auto;min-height:38px;padding:8px 12px;border-radius:999px}
+.day-index-list{display:grid;gap:9px}
+.day-index-card{width:100%;border:1px solid var(--line);border-radius:17px;background:var(--ux-card);color:var(--ink);display:grid;grid-template-columns:94px minmax(0,1fr) auto;align-items:center;gap:15px;padding:14px 16px;text-align:left;box-shadow:0 4px 16px rgba(22,43,30,.025);cursor:pointer}
+.day-index-card:hover{background:#fff;transform:translateY(-1px);border-color:#b8c5ba}
+.day-index-date{display:grid;gap:3px;padding-right:14px;border-right:1px solid var(--line)}
+.day-index-date strong{font-family:var(--display);font-size:22px;line-height:1;color:var(--forest2)}
+.day-index-date span{font-size:9px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+.day-index-copy{min-width:0;display:grid;gap:4px}
+.day-index-copy span{font-size:9px;text-transform:uppercase;letter-spacing:.085em;color:var(--muted);font-weight:900}
+.day-index-copy h2{font-family:var(--display);font-size:23px;line-height:1.08;margin:0}
+.day-index-copy p{font-size:11px;line-height:1.45;color:var(--muted);margin:0;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.day-index-side{display:flex;align-items:center;gap:12px}
+.day-index-side b{font-size:20px;color:#8a978d}
+
+/* Dedicated day page */
+.day-brief-page{display:grid;gap:15px}
+.back-row{justify-self:start;border:0;background:transparent;color:var(--forest2);font-weight:900;padding:4px 0;cursor:pointer}
+.day-brief-header{display:grid;grid-template-columns:105px minmax(0,1fr) 230px;gap:22px;align-items:stretch;padding:23px;border:1px solid var(--line);border-radius:23px;background:var(--ux-card);box-shadow:0 7px 25px rgba(22,43,30,.04)}
+.day-brief-date{display:grid;align-content:start;gap:7px;padding-right:19px;border-right:1px solid var(--line)}
+.day-brief-date span{font-size:9px;font-weight:950;letter-spacing:.09em;text-transform:uppercase;color:var(--muted)}
+.day-brief-date strong{font-family:var(--display);font-size:31px;line-height:1;color:var(--forest2)}
+.day-brief-title{align-self:center;min-width:0}
+.day-brief-title .day-place{font-size:10px;text-transform:uppercase;letter-spacing:.09em;color:var(--forest2);font-weight:950}
+.day-brief-title h1{font-family:var(--display);font-size:clamp(35px,5vw,59px);line-height:.94;letter-spacing:-.035em;margin:6px 0 11px}
+.day-brief-title p{max-width:710px;margin:0;color:var(--muted);font-size:14px;line-height:1.6}
+.day-brief-photo{position:relative;display:block;min-height:145px;max-height:175px;border-radius:16px;overflow:hidden;background:#17231b;color:#fff;text-decoration:none}
+.day-brief-photo img{width:100%;height:100%;object-fit:cover;display:block}
+.day-brief-photo:after{content:"";position:absolute;inset:45% 0 0;background:linear-gradient(transparent,rgba(0,0,0,.74))}
+.day-brief-photo span{position:absolute;z-index:1;left:11px;right:11px;bottom:10px;font-size:9px;line-height:1.25;font-weight:850}
+.day-brief-facts{display:grid;grid-template-columns:1fr 1fr .55fr;gap:9px}
+.day-brief-facts>div{min-height:70px;border:1px solid var(--line);border-radius:14px;background:var(--ux-card);padding:12px 14px;display:grid;align-content:center;gap:5px}
+.day-brief-facts>div>span{font-size:9px;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);font-weight:950}
+.day-brief-facts strong{font-size:12px;line-height:1.4}
+.day-brief-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(240px,.65fr);gap:13px;align-items:start}
+.day-brief-layout>div{display:grid;gap:12px}
+.day-agenda{padding:20px}
+.day-schedule-item{display:grid;grid-template-columns:70px 1fr;gap:14px;padding:14px 0;border-top:1px solid var(--line)}
+.day-schedule-item:first-of-type{border-top:0;padding-top:3px}
+.day-schedule-item time{font-size:11px;font-weight:950;color:var(--forest2);padding-top:3px}
+.day-schedule-item h3{font-size:15px;margin:0 0 5px}
+.day-schedule-item p{font-size:12px;line-height:1.55;color:var(--muted);margin:0}
+.day-history-card{border:1px solid var(--line);border-radius:18px;background:#fff;overflow:hidden}
+.day-history-card>summary{list-style:none;cursor:pointer;padding:17px 19px;display:grid;grid-template-columns:1fr auto;gap:14px;align-items:center;background:#f5f1e7}
+.day-history-card>summary::-webkit-details-marker{display:none}
+.day-history-card>summary span{font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:#80652b;font-weight:950}
+.day-history-card>summary h2{font-family:var(--display);font-size:23px;line-height:1.1;margin:4px 0 0}
+.day-history-card>summary b{width:31px;height:31px;border-radius:50%;display:grid;place-items:center;background:#fff;border:1px solid var(--line);font-size:19px;transition:.18s}
+.day-history-card[open]>summary b{transform:rotate(45deg)}
+.day-history-body{padding:19px;display:grid;gap:12px}
+.day-history-body p{font-size:13px;line-height:1.7;color:#3d493f;margin:0}
+.day-history-body button{justify-self:start;margin-top:3px}
+.day-brief-layout>aside{display:grid;gap:12px;position:sticky;top:82px}
+.day-practical,.day-actions-panel{padding:18px}
+.day-practical h2,.day-actions-panel h2{font-family:var(--display);font-size:23px;margin:0 0 12px}
+.day-practical ul{margin:0;padding-left:18px;display:grid;gap:9px}
+.day-practical li{font-size:12px;line-height:1.55;color:var(--muted)}
+.day-action-stack{display:grid;gap:8px}
+.day-action-stack button{width:100%;justify-content:center}
+
+/* Machu: compact shell and focused tabs */
+.machu-focused{display:grid;gap:14px;--machu-accent:#5e6236}
+.machu-compact-head{display:grid;grid-template-columns:minmax(0,1fr) 120px;gap:20px;align-items:end;padding:22px 24px;border-radius:22px;background:linear-gradient(125deg,#1f281c,#3f472a);color:#fff}
+.machu-compact-head>div:first-child>span{font-size:9px;letter-spacing:.1em;text-transform:uppercase;color:#d4d8bf;font-weight:950}
+.machu-compact-head h1{font-family:var(--display);font-size:clamp(44px,7vw,76px);line-height:.88;margin:8px 0 12px;letter-spacing:-.045em}
+.machu-compact-head p{max-width:670px;color:#d8dccd;font-size:12px;line-height:1.55;margin:0}
+.machu-ticket-mini{display:grid;place-items:center;align-content:center;min-height:105px;border:1px solid rgba(255,255,255,.18);border-radius:17px;background:rgba(255,255,255,.08);backdrop-filter:blur(8px)}
+.machu-ticket-mini span,.machu-ticket-mini small{font-size:9px;letter-spacing:.08em;text-transform:uppercase;color:#d7dacb;font-weight:900}
+.machu-ticket-mini strong{font-family:var(--display);font-size:31px;line-height:1.1;color:#f1cc63}
+.machu-tabs{position:sticky;top:66px;z-index:30;display:flex;gap:6px;overflow-x:auto;padding:7px;border:1px solid var(--line);border-radius:15px;background:rgba(244,245,239,.94);backdrop-filter:blur(12px);box-shadow:0 7px 20px rgba(24,40,29,.06);scrollbar-width:none}
+.machu-tabs::-webkit-scrollbar{display:none}
+.machu-tabs button{flex:0 0 auto;min-height:39px;padding:8px 13px;border:0;border-radius:10px;background:transparent;color:var(--muted);font-size:11px;font-weight:900;cursor:pointer}
+.machu-tabs button.active{background:#283120;color:#fff}
+.machu-view{display:grid;gap:14px;animation:ux-fade .16s ease-out}
+.module-view-head{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:18px;align-items:end;padding:18px 3px 5px}
+.module-view-head>div>span{font-size:9px;text-transform:uppercase;letter-spacing:.09em;color:var(--machu-accent);font-weight:950}
+.module-view-head h2{font-family:var(--display);font-size:clamp(31px,4.5vw,48px);line-height:.98;margin:6px 0 9px}
+.module-view-head p{max-width:820px;margin:0;color:var(--muted);font-size:12px;line-height:1.55}
+.compact-metrics{gap:8px}.compact-metrics .metric{min-height:92px;padding:14px}.compact-metrics .metric strong{font-size:25px}
+.machu-ticket-grid{margin-top:0}
+
+/* Route points: text first, thumbnails only when the match is exact */
+.point-core{display:block;margin-top:10px}
+.point-core:has(.reference-photo){display:grid;grid-template-columns:176px minmax(0,1fr);gap:15px;align-items:start}
+.point-core>div>p:first-child{margin-top:2px}
+.point-history{margin-top:12px;border:1px solid #d7d9c9;border-radius:13px;background:#f7f5ec;overflow:hidden}
+.point-history>summary{list-style:none;cursor:pointer;display:grid;grid-template-columns:auto minmax(0,1fr) auto;gap:10px;align-items:center;padding:12px 13px}
+.point-history>summary::-webkit-details-marker{display:none}
+.point-history>summary span{font-size:8px;text-transform:uppercase;letter-spacing:.09em;color:#78704b;font-weight:950}
+.point-history>summary strong{font-size:12px;line-height:1.35}
+.point-history>summary b{font-size:18px;transition:.18s}
+.point-history[open]>summary b{transform:rotate(45deg)}
+.point-history>div{padding:2px 14px 14px}
+.point-history p{font-size:12px;line-height:1.65;margin:9px 0;color:#42493f}
+.machu-history-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.machu-history-grid article{border:1px solid var(--line);border-radius:16px;background:#fff;padding:17px}
+.machu-history-grid article>span{font-size:10px;text-transform:uppercase;letter-spacing:.08em;color:var(--machu-accent);font-weight:950}
+.machu-history-grid h3{font-family:var(--display);font-size:23px;line-height:1.1;margin:7px 0 9px}
+.machu-history-grid p{font-size:12px;line-height:1.6;color:var(--muted);margin:0}
+
+/* Global media restraint. A photograph supports the content; it does not dominate it. */
+.reference-photo{width:min(100%,460px);margin:0 0 14px;border-radius:14px;box-shadow:0 6px 18px rgba(0,0,0,.11)}
+.reference-photo>a{aspect-ratio:auto;height:220px;max-height:220px}
+.reference-photo figcaption{padding:9px 11px;gap:3px}
+.reference-photo figcaption strong{font-size:.78rem}
+.reference-photo figcaption span{font-size:.7rem}
+.reference-photo figcaption a{font-size:.67rem}
+.reference-photo.compact{width:176px;max-width:176px;margin:0;border-radius:12px;box-shadow:none}
+.reference-photo.compact>a{height:108px;max-height:108px;aspect-ratio:auto}
+.reference-photo.compact figcaption{display:block;padding:7px 8px;background:#172019}
+.reference-photo.compact figcaption strong{display:block;font-size:.68rem;line-height:1.25}
+.reference-photo.compact figcaption a{display:block;margin-top:3px;font-size:.6rem}
+.reference-photo.compact figcaption span{display:none}
+.species-card>.reference-photo,.cusco-place>.reference-photo,.ollanta-place>.reference-photo,.lima-place>.reference-photo{margin:0 0 13px}
+.machu-stop .reference-photo,.route2-step .reference-photo{margin-top:0}
+.photo-gallery{grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}
+.photo-card{border-radius:15px;box-shadow:0 7px 20px rgba(0,0,0,.08)}
+.photo-card>a{aspect-ratio:16/10;max-height:175px}
+.photo-card figcaption{padding:11px 12px 13px}
+.photo-card h3{font-size:.92rem;margin-bottom:5px}
+.photo-card p{font-size:.73rem;line-height:1.45;margin-bottom:8px}
+.destination-card{min-height:178px}
+.destination-image{min-height:178px}
+.cusco-hero,.lima-hero,.ollanta-hero{min-height:370px}
+
+@media(max-width:1100px){
+  .photo-gallery{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .day-brief-header{grid-template-columns:92px minmax(0,1fr) 205px}
+}
+@media(max-width:900px){
+  .day-brief-header{grid-template-columns:80px minmax(0,1fr)}
+  .day-brief-photo{grid-column:1/-1;min-height:150px;max-height:190px}
+  .day-brief-layout{grid-template-columns:1fr}
+  .day-brief-layout>aside{position:static;grid-template-columns:1fr 1fr}
+  .photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:780px){
+  .day-index-card{grid-template-columns:68px minmax(0,1fr) auto;padding:12px 13px;gap:10px}
+  .day-index-date{padding-right:9px}.day-index-date strong{font-size:19px}.day-index-copy h2{font-size:20px}.day-index-copy p{font-size:10px;-webkit-line-clamp:1}.day-index-side .status{display:none}
+  .day-brief-header{grid-template-columns:1fr;padding:17px;gap:13px}.day-brief-date{display:flex;align-items:center;gap:10px;padding:0 0 12px;border-right:0;border-bottom:1px solid var(--line)}.day-brief-date strong{font-size:25px}.day-brief-title h1{font-size:39px}.day-brief-photo{grid-column:auto;min-height:135px;max-height:155px}
+  .day-brief-facts{grid-template-columns:1fr 1fr}.day-brief-facts>div:last-child{grid-column:1/-1;min-height:56px}.day-brief-layout>aside{grid-template-columns:1fr}.day-schedule-item{grid-template-columns:55px 1fr;gap:9px}.day-agenda{padding:16px}
+  .machu-compact-head{grid-template-columns:1fr 88px;padding:18px}.machu-compact-head h1{font-size:48px}.machu-ticket-mini{min-height:88px}.machu-ticket-mini strong{font-size:25px}.machu-tabs{top:58px;margin-left:-3px;margin-right:-3px}.module-view-head{grid-template-columns:1fr}.module-view-head .machu-progress-pill{justify-self:start}
+  .point-core:has(.reference-photo){grid-template-columns:118px minmax(0,1fr);gap:11px}.reference-photo.compact{width:118px;max-width:118px}.reference-photo.compact>a{height:82px;max-height:82px}.reference-photo.compact figcaption strong{font-size:.61rem}.reference-photo.compact figcaption a{display:none}
+  .machu-history-grid{grid-template-columns:1fr}.photo-gallery{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.photo-card>a{max-height:140px}.cusco-hero,.lima-hero,.ollanta-hero{min-height:310px!important}
+}
+@media(max-width:520px){
+  .day-index-card{grid-template-columns:58px minmax(0,1fr) 14px}.day-index-date strong{font-size:17px}.day-index-copy h2{font-size:18px}.day-index-side{gap:0}.day-index-side b{font-size:16px}
+  .machu-compact-head{grid-template-columns:1fr}.machu-ticket-mini{grid-template-columns:auto auto auto;justify-content:start;gap:9px;min-height:auto;padding:11px}.machu-ticket-mini strong{font-size:22px}.machu-compact-head p{font-size:11px}
+  .point-core:has(.reference-photo){grid-template-columns:96px minmax(0,1fr);gap:9px}.reference-photo.compact{width:96px;max-width:96px}.reference-photo.compact>a{height:70px;max-height:70px}.reference-photo.compact figcaption{display:none}
+  .photo-gallery{grid-template-columns:1fr 1fr}.photo-card>a{max-height:118px}.photo-card p{display:none}.photo-card figcaption a{font-size:.64rem}.photos-hero{min-height:270px;padding:24px 18px}.photos-hero h1{font-size:46px}
+}

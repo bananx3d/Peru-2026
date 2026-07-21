@@ -3,8 +3,8 @@
   const PH = window.PERU_PHOTOS || { items: [], policy: '', offlineNote: '' };
   const PB = window.PERU_PHRASEBOOK || { categories: [], phrases: [] };
   const I18N = window.PERU_I18N;
-  const APP_VERSION = 'v17';
-  const APP_BUILD = 'UX Rebuild · 5-tab navigation';
+  const APP_VERSION = 'v18';
+  const APP_BUILD = 'Day Briefs · Machu Focus';
   const STORAGE_PREFIX = 'peru2026_';
   const PHOTO_CACHE = 'peru-2026-photo-pack';
   const PHOTO_STATE_KEY = 'peru2026_photo_pack';
@@ -82,6 +82,7 @@
   }
   function routeTitle() {
     if (route === 'guide' && chapterId) return D.guides?.find(item => item.id === chapterId)?.title || ui('guide');
+    if (route === 'plan' && chapterId) return D.itinerary?.find(item => item.date === chapterId)?.title || ui('plan');
     const labels = {
       dashboard: ui('start'), plan: ui('plan'), guide: ui('guide'), wildlife: ui('wildlife'), more: ui('more'),
       bookings: ui('reservations'), tasks: ui('checklist'), payments: ui('payments'), journal: ui('journal'),
@@ -391,22 +392,56 @@
       </main>`;
   }
 
+  function dayDetail(day) {
+    const detail = window.PERU_DAY_DETAILS?.days?.[day.date];
+    if (!detail) return `<main class="page"><button class="back-row" type="button" data-route="plan">← ${ui('allPlan')}</button><h1 class="page-title">${esc(day.date)} · ${esc(day.title)}</h1><p class="page-intro">${esc(day.body)}</p></main>`;
+    const media = detail.media ? photoFor(detail.media.category, detail.media.target) : null;
+    const schedule = (detail.schedule || []).map(item => `<article class="day-schedule-item"><time>${esc(item.time)}</time><div><h3>${esc(loc(item.title))}</h3><p>${esc(loc(item.text))}</p></div></article>`).join('');
+    const practical = (detail.practical || []).map(item => `<li>${esc(loc(item))}</li>`).join('');
+    const history = (detail.history || []).map(item => `<p>${esc(loc(item))}</p>`).join('');
+    return `<main class="page day-brief-page">
+      <button class="back-row" type="button" data-route="plan">← ${ui('allPlan')}</button>
+      <header class="day-brief-header">
+        <div class="day-brief-date"><span>${esc(loc(detail.kicker))}</span><strong>${esc(day.date)}</strong></div>
+        <div class="day-brief-title"><div class="day-place">${esc(day.place)}</div><h1>${esc(day.title)}</h1><p>${esc(loc(detail.lead))}</p></div>
+        ${media ? `<a class="day-brief-photo" href="${esc(media.source)}" target="_blank" rel="noreferrer"><img src="${esc(media.image)}" alt="${esc(media.title)}" loading="lazy" decoding="async"><span>${esc(media.title)}</span></a>` : ''}
+      </header>
+      <section class="day-brief-facts"><div><span>${loc({pl:'Nocleg',en:'Accommodation',es:'Alojamiento'})}</span><strong>${esc(day.sleep)}</strong></div><div><span>${loc({pl:'Transport',en:'Transport',es:'Transporte'})}</span><strong>${esc(day.transport)}</strong></div><div><span>${loc({pl:'Status',en:'Status',es:'Estado'})}</span>${status(day.status)}</div></section>
+      <section class="day-brief-layout">
+        <div>
+          <section class="panel day-agenda"><div class="section-head compact-head"><div><h2>${loc({pl:'Przebieg dnia',en:'Day flow',es:'Desarrollo del día'})}</h2><p>${loc({pl:'Rozwinięty plan bez udawania, że wszystko wydarzy się co do minuty.',en:'A detailed plan without pretending every minute is fixed.',es:'Plan detallado sin fingir que cada minuto está fijado.'})}</p></div></div>${schedule}</section>
+          <details class="day-history-card">
+            <summary><div><span>${loc({pl:'Rys historyczny',en:'Historical background',es:'Contexto histórico'})}</span><h2>${esc(loc(detail.historyTitle))}</h2></div><b>+</b></summary>
+            <div class="day-history-body">${history}${detail.chapter ? `<button class="soft-btn" type="button" data-chapter="${esc(detail.chapter)}">${ui('readHistory')} →</button>` : ''}</div>
+          </details>
+        </div>
+        <aside>
+          <section class="panel day-practical"><h2>${loc({pl:'Na dziś pamiętać',en:'Remember today',es:'Recordar hoy'})}</h2><ul>${practical}</ul></section>
+          <section class="panel day-actions-panel"><h2>${loc({pl:'Szybkie przejścia',en:'Quick links',es:'Accesos rápidos'})}</h2><div class="day-action-stack">${detail.route ? `<button class="primary-btn" type="button" data-route="${esc(detail.route)}">${loc({pl:'Otwórz moduł operacyjny',en:'Open operational module',es:'Abrir módulo operativo'})}</button>` : ''}<button class="soft-btn" type="button" data-journal-day="${esc(day.date)}">${loc({pl:'Notatka z tego dnia',en:'Journal this day',es:'Diario de este día'})}</button><button class="soft-btn" type="button" data-route="phrases">${ui('phrasebook')}</button></div></section>
+        </aside>
+      </section>
+    </main>`;
+  }
+
   function plan() {
+    if (chapterId) {
+      const selected = D.itinerary.find(item => item.date === chapterId);
+      if (selected) return dayDetail(selected);
+    }
     const items = filter === 'all' ? D.itinerary : D.itinerary.filter((x) => x.status === filter);
     return `
-      <main class="page">
-        <h1 class="page-title">Plan dzień po dniu</h1>
-        <p class="page-intro">Pełna oś wyprawy 04–26.09. Każdy dzień zawiera nocleg, transport, status i praktyczny opis. To jest rdzeń aplikacji.</p>
-        <div class="filters">
-          ${[['all', 'Wszystkie'], ['done', 'Zrobione'], ['confirmed', 'Potwierdzone'], ['buy', 'Do rezerwacji'], ['open', 'Decyzje'], ['onsite', 'Na miejscu'], ['planned', 'Plan ustalony']]
+      <main class="page plan-page">
+        <header class="hub-heading plan-heading"><span class="eyebrow dark">04–26.09.2026</span><h1>${loc({pl:'Dzień po dniu',en:'Day by day',es:'Día a día'})}</h1><p>${loc({pl:'Kliknij konkretny dzień. Otworzy się osobna, uporządkowana karta z planem, tłem historycznym i praktycznymi decyzjami.',en:'Open a specific day for a clean brief with the schedule, historical background and practical decisions.',es:'Abre un día concreto para ver una ficha clara con plan, contexto histórico y decisiones prácticas.'})}</p></header>
+        <div class="filters compact-filters">
+          ${[['all', loc({pl:'Wszystkie',en:'All',es:'Todos'})], ['done', loc({pl:'Zrobione',en:'Done',es:'Hecho'})], ['confirmed', loc({pl:'Potwierdzone',en:'Confirmed',es:'Confirmado'})], ['buy', loc({pl:'Do rezerwacji',en:'To book',es:'Por reservar'})], ['open', loc({pl:'Decyzje',en:'Decisions',es:'Decisiones'})], ['planned', loc({pl:'Plan',en:'Planned',es:'Plan'})]]
             .map(([id, label]) => `<button type="button" class="filter ${filter === id ? 'active' : ''}" data-filter="${id}">${label}</button>`).join('')}
         </div>
-        <section class="day-list">
-          ${items.map((day, index) => `
-            <details id="day-${esc(day.date.replace('.', '-'))}" class="day-card ${chapterId === day.date ? 'focus-day' : ''}" ${chapterId === day.date || (!chapterId && index < 1) ? 'open' : ''}>
-              <summary><div class="day-date">${esc(day.date)}</div><div><div class="day-place">${esc(day.place)}</div><div class="day-title">${esc(day.title)}</div></div>${status(day.status)}</summary>
-              <div class="day-body"><p>${esc(day.body)}</p><div class="facts"><div class="fact"><b>Nocleg</b>${esc(day.sleep)}</div><div class="fact"><b>Transport</b>${esc(day.transport)}</div></div></div>
-            </details>`).join('') || '<div class="empty">Brak dni w tym filtrze.</div>'}
+        <section class="day-index-list">
+          ${items.map((day, index) => `<button type="button" class="day-index-card" data-plan-day="${esc(day.date)}">
+            <div class="day-index-date"><strong>${esc(day.date)}</strong><span>${String(index + 1).padStart(2,'0')}</span></div>
+            <div class="day-index-copy"><span>${esc(day.place)}</span><h2>${esc(day.title)}</h2><p>${esc(day.body)}</p></div>
+            <div class="day-index-side">${status(day.status)}<b>→</b></div>
+          </button>`).join('') || '<div class="empty">Brak dni w tym filtrze.</div>'}
         </section>
       </main>`;
   }
@@ -474,16 +509,82 @@
   }
   function saveMachuStorage(value) { localStorage.setItem('peru2026_machu_v12', JSON.stringify(value)); }
 
+  function pointHistoryDetails(step) {
+    if (!step?.history) return '';
+    const body = (step.history.body || []).map(paragraph => `<p>${esc(loc(paragraph))}</p>`).join('');
+    return `<details class="point-history"><summary><span>${loc({pl:'Rys historyczny punktu',en:'Point history',es:'Historia del punto'})}</span><strong>${esc(loc(step.history.title))}</strong><b>+</b></summary><div>${body}</div></details>`;
+  }
+
+  function machuTabs(active) {
+    const tabs = [
+      ['day', {pl:'Dzień 20.09',en:'20 Sep day',es:'Día 20.09'}],
+      ['3a', {pl:'Ruta 3-A',en:'Route 3-A',es:'Ruta 3-A'}],
+      ['2', {pl:'Ruta 2-A / 2-B',en:'Route 2-A / 2-B',es:'Ruta 2-A / 2-B'}],
+      ['history', {pl:'Historia',en:'History',es:'Historia'}],
+      ['rules', {pl:'Zasady',en:'Rules',es:'Reglas'}]
+    ];
+    return `<nav class="machu-tabs" aria-label="Machu Picchu">${tabs.map(([id,label]) => `<button type="button" class="${active === id ? 'active' : ''}" data-machu-view="${id}">${esc(loc(label))}</button>`).join('')}</nav>`;
+  }
+
   function route2Detail(route, saved) {
     const completed = route.steps.filter(step => saved.route2Progress?.[`${route.id}:${step.id}`]).length;
     return `<details class="route2-detail" ${route.id === '2a' ? 'open' : ''}>
       <summary><div><span>${esc(route.badge)}</span><h3>${esc(route.name)}</h3><p>${esc(route.summary)}</p></div><strong>${completed}/${route.steps.length}</strong></summary>
       <div class="route2-detail-body">
         <div class="route2-quick-grid">${route.quick.map(([label,value])=>`<div><span>${esc(label)}</span><strong>${esc(value)}</strong></div>`).join('')}</div>
-        <a class="official-map-link" href="${esc(route.mapUrl)}" target="_blank" rel="noreferrer">Otwórz oficjalną mapę PDF ↗</a>
-        <div class="route2-step-list">${route.steps.map(step=>{const key=`${route.id}:${step.id}`; const checked=!!saved.route2Progress?.[key]; return `<article class="route2-step ${checked?'complete':''}"><div class="route2-step-index">${esc(step.order)}</div><div><div class="route2-step-top"><div><span>${esc(step.time)} · orientacyjnie</span><h4>${esc(step.name)}</h4></div><label class="seen-toggle"><input type="checkbox" data-machu-route2-stop="${esc(key)}" ${checked?'checked':''}><span>${checked?'Zaliczone':'Odhacz'}</span></label></div>${photoFigure('Machu Picchu', step.id, true)}<p><strong>Na co patrzeć:</strong> ${esc(step.look)}</p><p class="muted"><strong>Zdjęcie:</strong> ${esc(step.photo)}</p></div></article>`}).join('')}</div>
+        <a class="official-map-link" href="${esc(route.mapUrl)}" target="_blank" rel="noreferrer">${loc({pl:'Otwórz oficjalną mapę PDF',en:'Open official PDF map',es:'Abrir mapa oficial PDF'})} ↗</a>
+        <div class="route2-step-list">${route.steps.map(step=>{
+          const key=`${route.id}:${step.id}`;
+          const checked=!!saved.route2Progress?.[key];
+          return `<article class="route2-step ${checked?'complete':''}">
+            <div class="route2-step-index">${esc(step.order)}</div>
+            <div class="route2-step-main">
+              <div class="route2-step-top"><div><span>${esc(step.time)} · ${loc({pl:'orientacyjnie',en:'approx.',es:'aprox.'})}</span><h4>${esc(step.name)}</h4></div><label class="seen-toggle"><input type="checkbox" data-machu-route2-stop="${esc(key)}" ${checked?'checked':''}><span>${checked?loc({pl:'Zaliczone',en:'Done',es:'Hecho'}):loc({pl:'Odhacz',en:'Check',es:'Marcar'})}</span></label></div>
+              <div class="point-core">${photoFigure('Machu Picchu', step.id, true)}<div><p><strong>${loc({pl:'Co zobaczycie:',en:'What you will see:',es:'Qué veréis:'})}</strong> ${esc(step.look)}</p><p class="muted"><strong>${loc({pl:'Kadr:',en:'Photograph:',es:'Foto:'})}</strong> ${esc(step.photo)}</p></div></div>
+              ${pointHistoryDetails(step)}
+            </div>
+          </article>`
+        }).join('')}</div>
       </div>
     </details>`;
+  }
+
+  function machuDayView(M, saved, checkCount, routeCount, route2Labels) {
+    return `<section class="machu-view">
+      <section class="metrics compact-metrics"><div class="metric"><span>${loc({pl:'Bilet główny',en:'Main ticket',es:'Entrada principal'})}</span><strong>3-A</strong><small>${esc(M.ticket.entry)} · ${esc(M.ticket.date)}</small></div><div class="metric"><span>${loc({pl:'Przejście trasy',en:'Route progress',es:'Progreso'})}</span><strong>${routeCount}/${M.route3.length}</strong><small>${loc({pl:'odhaczane na miejscu',en:'checked on site',es:'marcado en sitio'})}</small></div><div class="metric"><span>${loc({pl:'Checklista',en:'Checklist',es:'Lista'})}</span><strong>${checkCount}/${M.rules.length}</strong><small>${loc({pl:'przed wyjściem',en:'before leaving',es:'antes de salir'})}</small></div><div class="metric"><span>Ruta 2</span><strong>${esc(route2Labels[saved.route2Status] || 'Otwarte')}</strong><small>${esc(saved.route2Choice || 'priorytet 13:00')}</small></div></section>
+      <section class="section machu-ticket-grid"><article class="machu-ticket"><span>${loc({pl:'PEWNY BILET',en:'CONFIRMED TICKET',es:'ENTRADA CONFIRMADA'})}</span><h2>${esc(M.ticket.route)}</h2><dl><div><dt>${loc({pl:'Data',en:'Date',es:'Fecha'})}</dt><dd>${esc(M.ticket.date)}</dd></div><div><dt>${loc({pl:'Wejście',en:'Entry',es:'Entrada'})}</dt><dd>${esc(M.ticket.entry)}</dd></div><div><dt>${loc({pl:'Uczestnicy',en:'Travellers',es:'Viajeros'})}</dt><dd>${esc(M.ticket.holder)}</dd></div><div><dt>${loc({pl:'Status',en:'Status',es:'Estado'})}</dt><dd>${esc(M.ticket.status)}</dd></div></dl></article><article class="machu-live"><span>${loc({pl:'OSTATNIA WERYFIKACJA',en:'LAST VERIFIED',es:'ÚLTIMA VERIFICACIÓN'})} ${esc(M.verified.date)}</span><h2>${esc(M.verified.headline)}</h2><p>${esc(M.verified.text)}</p><a href="${esc(M.verified.source)}" target="_blank" rel="noreferrer">${loc({pl:'Oficjalny komunikat',en:'Official notice',es:'Comunicado oficial'})} ↗</a></article></section>
+      <section class="section"><div class="section-head"><div><h2>${loc({pl:'Plan operacyjny',en:'Operational plan',es:'Plan operativo'})}</h2><p>${loc({pl:'Tylko przebieg dnia. Trasy mają osobne zakładki.',en:'Only the day flow. Routes have separate tabs.',es:'Solo el flujo del día. Las rutas tienen pestañas separadas.'})}</p></div></div><div class="machu-mission-grid"><div class="panel"><div class="timeline">${M.mission.map(x=>`<div class="timeline-item"><div class="timeline-time">${esc(x.time)}</div><div class="timeline-line"></div><div class="timeline-content"><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div></div>`).join('')}</div></div><div class="panel machu-actual"><h3>${loc({pl:'Rzeczywiste godziny',en:'Actual times',es:'Horas reales'})}</h3><p class="muted small">${loc({pl:'Zapis lokalny do późniejszej kroniki.',en:'Saved locally for the later chronicle.',es:'Guardado localmente para la crónica.'})}</p>${[['wake','Pobudka'],['bus','Autobus w górę'],['entry3','Wejście 3-A'],['gate','Bramka Waynapicchu'],['summit','Szczyt'],['exit3','Wyjście po 3-A'],['entry2','Wejście Ruta 2'],['exit2','Wyjście Ruta 2'],['station','Na stacji']].map(([id,label])=>`<label><span>${label}</span><input type="time" data-machu-actual="${id}" value="${esc(saved.actual?.[id] || '')}"></label>`).join('')}<label><span>${loc({pl:'Notatka operacyjna',en:'Operational note',es:'Nota operativa'})}</span><textarea data-machu-field="notes" placeholder="Pogoda, kolejki, tempo grupy, decyzja o pociągu…">${esc(saved.notes || '')}</textarea></label></div></div></section>
+    </section>`;
+  }
+
+  function machuRoute3View(M, saved, routeCount) {
+    return `<section class="machu-view"><header class="module-view-head"><div><span>Ruta 3-A · Waynapicchu</span><h2>${loc({pl:'Wasza poranna trasa — szczegółowo',en:'Your morning route — in detail',es:'Vuestra ruta de mañana — en detalle'})}</h2><p>${loc({pl:'Każdy etap ma krótki opis operacyjny oraz rozwijany rys historyczny. Fotografia pojawia się tylko tam, gdzie dokładnie przedstawia dany obiekt.',en:'Each stage has an operational note and expandable history. A photograph appears only when it matches the exact object.',es:'Cada etapa tiene nota operativa e historia desplegable. Solo aparece foto cuando coincide con el objeto exacto.'})}</p></div><span class="machu-progress-pill">${routeCount}/${M.route3.length}</span></header>
+      <div class="machu-route-line">${M.route3.map(x=>`<article class="machu-stop ${saved.route?.[x.id]?'complete':''}"><div class="machu-stop-index">${esc(x.order)}</div><div class="machu-stop-body"><div class="machu-stop-top"><div><span>${esc(x.type)} · ${esc(x.time)}</span><h3>${esc(x.name)}</h3></div><label class="seen-toggle"><input type="checkbox" data-machu-stop="${esc(x.id)}" ${saved.route?.[x.id]?'checked':''}><span>${saved.route?.[x.id]?loc({pl:'Zaliczone',en:'Done',es:'Hecho'}):loc({pl:'Odhacz',en:'Check',es:'Marcar'})}</span></label></div><div class="point-core">${photoFigure('Machu Picchu', x.id, true)}<div><p><strong>${loc({pl:'Co zobaczycie:',en:'What you will see:',es:'Qué veréis:'})}</strong> ${esc(x.look)}</p><p class="muted"><strong>${loc({pl:'Kadr:',en:'Photograph:',es:'Foto:'})}</strong> ${esc(x.photo)}</p></div></div>${pointHistoryDetails(x)}</div></article>`).join('')}</div>
+      <section class="section"><div class="section-head"><div><h2>${loc({pl:'Jak czytać Machu Picchu',en:'How to read Machu Picchu',es:'Cómo leer Machu Picchu'})}</h2><p>${loc({pl:'Sześć motywów ważniejszych niż odhaczanie ruin.',en:'Six themes more useful than ticking off ruins.',es:'Seis temas más útiles que marcar ruinas.'})}</p></div></div><div class="machu-focus-grid">${M.focusCards.map((x,i)=>`<article><span>${String(i+1).padStart(2,'0')}</span><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></article>`).join('')}</div></section>
+    </section>`;
+  }
+
+  function machuRoute2View(M, saved) {
+    return `<section class="machu-view"><header class="module-view-head"><div><span>Circuito 2 · Machupicchu Clásico</span><h2>Ruta 2-A / 2-B</h2><p>${loc({pl:'Najpierw decyzja zakupowa i różnice. Niżej dwa osobne, rozwijane przebiegi — nie jeden kilometrowy ekran.',en:'First the purchase decision and differences. Below are two separate expandable routes, not one endless page.',es:'Primero la decisión y diferencias. Debajo hay dos rutas desplegables separadas, no una página interminable.'})}</p></div></header>
+      <div class="grid-2 machu-route2"><div class="panel"><h3>${loc({pl:'Status zakupu 19.09',en:'Purchase status 19 Sep',es:'Estado de compra 19.09'})}</h3><label class="field-label"><span>${loc({pl:'Co się udało?',en:'What happened?',es:'¿Qué se consiguió?'})}</span><select id="machuRoute2Status"><option value="not-tried" ${saved.route2Status==='not-tried'?'selected':''}>Jeszcze nie próbowano</option><option value="queue" ${saved.route2Status==='queue'?'selected':''}>W kolejce / procedura w toku</option><option value="bought" ${saved.route2Status==='bought'?'selected':''}>Bilet kupiony</option><option value="unavailable" ${saved.route2Status==='unavailable'?'selected':''}>Brak biletu</option></select></label><label class="field-label"><span>${loc({pl:'Wybrana ruta i godzina',en:'Chosen route and time',es:'Ruta y hora elegidas'})}</span><input id="machuRoute2Choice" value="${esc(saved.route2Choice || '')}" placeholder="np. 2-B · 13:00"></label><div class="priority-stack">${M.route2.priority.map((x,i)=>`<div><b>${i+1}</b><span>${esc(x)}</span></div>`).join('')}</div><div class="callout"><strong>${loc({pl:'Zasada',en:'Rule',es:'Regla'})}</strong>${esc(M.route2.rule)}</div></div><div class="panel"><h3>${loc({pl:'Najkrótsza odpowiedź',en:'The short answer',es:'Respuesta corta'})}</h3>${M.route2.differences.map(x=>`<article class="route2-card"><span>${esc(x.verdict)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></article>`).join('')}<p class="muted small route2-verified">${esc(M.route2.verified)}</p></div></div>
+      <div class="route2-compare-wrap"><table class="route2-compare"><thead><tr><th>${loc({pl:'Porównanie',en:'Comparison',es:'Comparación'})}</th><th>Ruta 2-A</th><th>Ruta 2-B</th></tr></thead><tbody>${M.route2.compare.map(row=>`<tr><th>${esc(row.label)}</th><td>${esc(row.a)}</td><td>${esc(row.b)}</td></tr>`).join('')}</tbody></table></div>
+      <div class="route2-details">${M.route2.routes.map(route=>route2Detail(route,saved)).join('')}</div>
+      <div class="grid-2 route2-bottom"><div class="panel"><h3>${loc({pl:'Słownik na trasie',en:'Route glossary',es:'Glosario'})}</h3><div class="route2-glossary">${M.route2.glossary.map(([term,text])=>`<div><strong>${esc(term)}</strong><span>${esc(text)}</span></div>`).join('')}</div></div><div class="panel"><h3>${loc({pl:'Notatka po drugim wejściu',en:'Note after second entry',es:'Nota tras la segunda entrada'})}</h3><label class="field-label"><span>${loc({pl:'Co było najlepsze, co ominęliśmy, jaka była pogoda?',en:'What was best, what did we miss, how was the weather?',es:'¿Qué fue lo mejor, qué faltó y cómo estuvo el tiempo?'})}</span><textarea data-machu-field="route2Notes" rows="9">${esc(saved.route2Notes || '')}</textarea></label></div></div>
+    </section>`;
+  }
+
+  function machuHistoryView(M) {
+    const cards = [
+      [loc({pl:'XV wiek',en:'15th century',es:'Siglo XV'}), loc({pl:'Budowa w okresie ekspansji Inków',en:'Built during Inca expansion',es:'Construcción durante la expansión inca'}), loc({pl:'Najczęściej wiązane z Pachacutecem i królewską posiadłością, ale kompleks łączył funkcje rezydencjonalne, ceremonialne, administracyjne i rolnicze.',en:'Most often associated with Pachacuti and a royal estate, but the complex combined residential, ceremonial, administrative and agricultural roles.',es:'Se asocia con Pachacútec y una propiedad real, pero combinó funciones residenciales, ceremoniales, administrativas y agrícolas.'})],
+      [loc({pl:'XVI wiek',en:'16th century',es:'Siglo XVI'}), loc({pl:'Opuszczenie w czasie kryzysu imperium',en:'Abandonment during imperial crisis',es:'Abandono durante la crisis imperial'}), loc({pl:'Hiszpanie prawdopodobnie nie zajęli samego miejsca, lecz podbój, epidemie i rozpad sieci państwowej odebrały mu funkcję oraz zaplecze.',en:'The Spanish probably did not occupy the site itself, but conquest, epidemics and collapse of state networks removed its function and support.',es:'Los españoles probablemente no ocuparon el sitio, pero conquista, epidemias y colapso estatal eliminaron su función y apoyo.'})],
+      ['1911', loc({pl:'Bingham i międzynarodowe nagłośnienie',en:'Bingham and international publicity',es:'Bingham y difusión internacional'}), loc({pl:'Hiram Bingham dotarł na stanowisko dzięki lokalnym mieszkańcom. Nie „odkrył” miejsca nieznanego wszystkim — nadał mu globalną widoczność i rozpoczął epokę badań oraz sporów o zabytki.',en:'Hiram Bingham reached the site with local help. He did not discover a place unknown to everyone; he gave it global visibility and began an era of research and disputes over objects.',es:'Hiram Bingham llegó con ayuda local. No descubrió un lugar desconocido para todos; le dio visibilidad global e inició una época de investigación y disputas.'})],
+      ['1983', 'UNESCO', loc({pl:'Sanktuarium wpisano na Listę Światowego Dziedzictwa jako dobro mieszane: kulturowe i przyrodnicze. Ochrona dotyczy nie tylko ruin, lecz całego górskiego krajobrazu.',en:'The sanctuary entered the World Heritage List as a mixed cultural and natural property. Protection covers not only ruins but the wider mountain landscape.',es:'El santuario entró en la Lista del Patrimonio Mundial como bien mixto cultural y natural. La protección abarca ruinas y paisaje montañoso.'})]
+    ];
+    return `<section class="machu-view"><header class="module-view-head"><div><span>${loc({pl:'Historia bez legend turystycznych',en:'History without tourist myths',es:'Historia sin mitos turísticos'})}</span><h2>${loc({pl:'Co naprawdę wiadomo o Machu Picchu',en:'What is actually known about Machu Picchu',es:'Qué se sabe realmente de Machu Picchu'})}</h2><p>${loc({pl:'Najważniejsze fakty, ostrożne hipotezy i link do pełnego rozdziału.',en:'Key evidence, cautious hypotheses and a link to the full chapter.',es:'Evidencias clave, hipótesis prudentes y enlace al capítulo completo.'})}</p></div></header><div class="machu-history-grid">${cards.map(([date,title,text])=>`<article><span>${esc(date)}</span><h3>${esc(title)}</h3><p>${esc(text)}</p></article>`).join('')}</div><section class="section grid-2"><div class="panel"><h3>${loc({pl:'Pełny rozdział książkowy',en:'Full long-form chapter',es:'Capítulo completo'})}</h3><p class="muted">${loc({pl:'Architektura, woda, kamieniarstwo, hipotezy funkcji, badania i współczesna ochrona.',en:'Architecture, water, masonry, function hypotheses, research and modern conservation.',es:'Arquitectura, agua, cantería, hipótesis de función, investigación y conservación.'})}</p><button class="primary-btn" type="button" data-chapter="machu">${ui('readHistory')} →</button></div><div class="panel"><h3>${loc({pl:'Źródła',en:'Sources',es:'Fuentes'})}</h3><div class="field-source-list">${M.sources.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noreferrer">${esc(x.label)} ↗</a>`).join('')}</div></div></section></section>`;
+  }
+
+  function machuRulesView(M, saved, checkCount) {
+    return `<section class="machu-view"><header class="module-view-head"><div><span>${loc({pl:'Bezpieczeństwo i wejście',en:'Safety and entry',es:'Seguridad y entrada'})}</span><h2>${loc({pl:'Zasady bez przewijania całego przewodnika',en:'Rules without scrolling the whole guide',es:'Reglas sin recorrer toda la guía'})}</h2><p>${loc({pl:'Dokumenty, plecak, zakazy i decyzja pogodowa w jednym miejscu.',en:'Documents, bag, restrictions and weather decision in one place.',es:'Documentos, mochila, prohibiciones y decisión por clima en un lugar.'})}</p></div><span class="machu-progress-pill">${checkCount}/${M.rules.length}</span></header><div class="grid-2"><div class="panel"><h3>${loc({pl:'Checklista',en:'Checklist',es:'Lista'})}</h3><div class="checklist">${M.rules.map(x=>`<label class="task-check"><input type="checkbox" data-machu-check="${esc(x.id)}" ${saved.checks?.[x.id]?'checked':''}><span>${esc(x.text)}</span></label>`).join('')}</div></div><div class="panel"><h3>${loc({pl:'Zakazane lub ryzykowne',en:'Prohibited or risky',es:'Prohibido o arriesgado'})}</h3><div class="simple-list">${M.prohibited.map((x,i)=>`<div class="simple-item"><span>${String(i+1).padStart(2,'0')}</span><div>${esc(x)}</div></div>`).join('')}</div></div></div><section class="section"><div class="machu-risk-grid">${M.risk.map(x=>`<article class="risk-${esc(x.level)}"><span>${esc(x.level)}</span><h3>${esc(x.title)}</h3><p>${esc(x.action)}</p></article>`).join('')}</div></section><button class="soft-btn" type="button" id="exportMachu">${loc({pl:'Eksportuj zapis Machu',en:'Export Machu data',es:'Exportar datos Machu'})}</button></section>`;
   }
 
   function machu() {
@@ -492,39 +593,22 @@
     const saved = machuStorage();
     const checkCount = M.rules.filter(x => saved.checks?.[x.id]).length;
     const routeCount = M.route3.filter(x => saved.route?.[x.id]).length;
-    const route2Labels = { 'not-tried':'Jeszcze nie próbowano', queue:'W kolejce / procedura w toku', bought:'Bilet kupiony', unavailable:'Brak biletu' };
-    return `<main class="page machu-page">
-      <section class="machu-hero" style="--machu-hero:url('${esc(M.hero)}')"><div><span class="eyebrow">19–20.09 · najważniejsza operacja wyprawy</span><h1>Machu Picchu<br>Mission Complete</h1><p>Pełny moduł waszej Ruty 3-A z Waynapicchu oraz dokładny przewodnik po Rucie 2-A i 2-B: różnice, kolejność miejsc, oficjalne mapy i tracker przejścia.</p><div class="hero-actions"><button class="primary-btn" type="button" data-machu-scroll="mission">Plan dnia</button><button class="ghost-btn" type="button" data-machu-scroll="route">Ruta 3-A</button><button class="ghost-btn" type="button" data-machu-scroll="route2">Ruta 2-A / 2-B</button><button class="ghost-btn" type="button" data-machu-scroll="rules">Checklista</button></div></div></section>
-
-      <section class="metrics compact-metrics"><div class="metric"><span>Bilet główny</span><strong>3-A</strong><small>${esc(M.ticket.entry)} · ${esc(M.ticket.date)}</small></div><div class="metric"><span>Przejście trasy</span><strong>${routeCount}/${M.route3.length}</strong><small>odhaczane na miejscu</small></div><div class="metric"><span>Checklista</span><strong>${checkCount}/${M.rules.length}</strong><small>przed wyjściem z hotelu</small></div><div class="metric"><span>Ruta 2</span><strong>${esc(route2Labels[saved.route2Status] || 'Otwarte')}</strong><small>${esc(saved.route2Choice || 'priorytet 13:00')}</small></div></section>
-
-      <section class="section machu-ticket-grid"><article class="machu-ticket"><span>PEWNY BILET</span><h2>${esc(M.ticket.route)}</h2><dl><div><dt>Data</dt><dd>${esc(M.ticket.date)}</dd></div><div><dt>Wejście</dt><dd>${esc(M.ticket.entry)}</dd></div><div><dt>Uczestnicy</dt><dd>${esc(M.ticket.holder)}</dd></div><div><dt>Status</dt><dd>${esc(M.ticket.status)}</dd></div></dl></article><article class="machu-live"><span>ZWERYFIKOWANO ${esc(M.verified.date)}</span><h2>${esc(M.verified.headline)}</h2><p>${esc(M.verified.text)}</p><a href="${esc(M.verified.source)}" target="_blank" rel="noreferrer">Oficjalny komunikat ↗</a></article></section>
-
-      <section class="section" id="machu-mission"><div class="section-head"><div><h2>20.09 — plan operacyjny</h2><p>To plan z marginesem, nie obietnica co do minuty. Rzeczywiste godziny wpiszcie po każdym kluczowym etapie.</p></div></div><div class="machu-mission-grid"><div class="panel"><div class="timeline">${M.mission.map(x=>`<div class="timeline-item"><div class="timeline-time">${esc(x.time)}</div><div class="timeline-line"></div><div class="timeline-content"><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></div></div>`).join('')}</div></div><div class="panel machu-actual"><h3>Rzeczywiste godziny</h3><p class="muted small">Zapis lokalny. Dzięki temu po powrocie zostanie prawdziwy przebieg dnia.</p>${[['wake','Pobudka'],['bus','Autobus w górę'],['entry3','Wejście 3-A'],['gate','Bramka Waynapicchu'],['summit','Szczyt'],['exit3','Wyjście po 3-A'],['entry2','Wejście Ruta 2'],['exit2','Wyjście Ruta 2'],['station','Na stacji']].map(([id,label])=>`<label><span>${label}</span><input type="time" data-machu-actual="${id}" value="${esc(saved.actual?.[id] || '')}"></label>`).join('')}<label><span>Notatka operacyjna</span><textarea data-machu-field="notes" placeholder="Pogoda, kolejki, tempo grupy, decyzja o pociągu…">${esc(saved.notes || '')}</textarea></label></div></div></section>
-
-      <section class="section" id="machu-route"><div class="section-head"><div><h2>Ruta 3-A krok po kroku</h2><p>Oficjalna trasa Waynapicchu ma 2,4 km. Dokładne barierki i kolejność przejścia wyznacza obsługa — aplikacja pokazuje logikę obserwacji, nie zastępuje oznaczeń na miejscu.</p></div><span class="machu-progress-pill">${routeCount}/${M.route3.length} etapów</span></div><div class="machu-route-line">${M.route3.map(x=>`<article class="machu-stop ${saved.route?.[x.id]?'complete':''}"><div class="machu-stop-index">${esc(x.order)}</div><div class="machu-stop-body"><div class="machu-stop-top"><div><span>${esc(x.type)} · ${esc(x.time)}</span><h3>${esc(x.name)}</h3></div><label class="seen-toggle"><input type="checkbox" data-machu-stop="${esc(x.id)}" ${saved.route?.[x.id]?'checked':''}><span>${saved.route?.[x.id]?'Zaliczone':'Odhacz'}</span></label></div>${photoFigure('Machu Picchu', x.id, true)}<p><strong>Na co patrzeć:</strong> ${esc(x.look)}</p><p class="muted"><strong>Zdjęcie:</strong> ${esc(x.photo)}</p></div></article>`).join('')}</div></section>
-
-      <section class="section"><div class="section-head"><div><h2>Sześć rzeczy, które większość ludzi przegapia</h2><p>Macie patrzeć nie tylko na „ładne ruiny”, ale na system.</p></div></div><div class="machu-focus-grid">${M.focusCards.map((x,i)=>`<article><span>${String(i+1).padStart(2,'0')}</span><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></article>`).join('')}</div></section>
-
-      <section class="section" id="machu-route2"><div class="section-head"><div><h2>Ruta 2-A i 2-B — pełny przewodnik</h2><p>Obie należą do Circuito 2 Machupicchu Clásico. Oficjalne mapy podają maksymalnie ${esc(M.route2.maxStay)} pobytu. Różnica dotyczy przede wszystkim początku i wysokości klasycznego punktu widokowego; po Foso Seco trasy mają bardzo podobny rdzeń miejski.</p></div><span class="machu-progress-pill">2 oficjalne warianty</span></div>
-        <div class="grid-2 machu-route2"><div class="panel"><h3>Status zakupu 19.09</h3><label class="field-label"><span>Co się udało?</span><select id="machuRoute2Status"><option value="not-tried" ${saved.route2Status==='not-tried'?'selected':''}>Jeszcze nie próbowano</option><option value="queue" ${saved.route2Status==='queue'?'selected':''}>W kolejce / procedura w toku</option><option value="bought" ${saved.route2Status==='bought'?'selected':''}>Bilet kupiony</option><option value="unavailable" ${saved.route2Status==='unavailable'?'selected':''}>Brak biletu</option></select></label><label class="field-label"><span>Wybrana ruta i godzina</span><input id="machuRoute2Choice" value="${esc(saved.route2Choice || '')}" placeholder="np. 2-B · 13:00"></label><div class="priority-stack">${M.route2.priority.map((x,i)=>`<div><b>${i+1}</b><span>${esc(x)}</span></div>`).join('')}</div><div class="callout"><strong>Zasada</strong>${esc(M.route2.rule)}</div></div><div class="panel"><h3>Najkrótsza odpowiedź</h3>${M.route2.differences.map(x=>`<article class="route2-card"><span>${esc(x.verdict)}</span><h3>${esc(x.name)}</h3><p>${esc(x.text)}</p></article>`).join('')}<p class="muted small route2-verified">${esc(M.route2.verified)}</p></div></div>
-
-        <div class="route2-compare-wrap"><table class="route2-compare"><thead><tr><th>Porównanie</th><th>Ruta 2-A</th><th>Ruta 2-B</th></tr></thead><tbody>${M.route2.compare.map(row=>`<tr><th>${esc(row.label)}</th><td>${esc(row.a)}</td><td>${esc(row.b)}</td></tr>`).join('')}</tbody></table></div>
-
-        <div class="section-head route2-subhead"><div><h2>Co Ruta 2 daje po porannej 3-A?</h2><p>To nie jest bezsensowne powtarzanie. Poranna 3-A koncentruje się na sektorze królewskim i Waynapicchu, a Circuito 2 dokłada klasyczną panoramę i ceremonialno-miejski rdzeń.</p></div></div><div class="route2-gain-grid">${M.route2.after3A.map((x,i)=>`<article><span>${String(i+1).padStart(2,'0')}</span><h3>${esc(x.title)}</h3><p>${esc(x.text)}</p></article>`).join('')}</div>
-
-        <div class="section-head route2-subhead"><div><h2>Przebieg krok po kroku</h2><p>Czasy przy punktach są orientacyjnym podziałem waszego limitu, a nie oficjalnymi limitami etapów. Nie cofajcie się pod prąd i zawsze wykonujcie polecenia obsługi.</p></div></div><div class="route2-details">${M.route2.routes.map(route=>route2Detail(route,saved)).join('')}</div>
-
-        <div class="grid-2 route2-bottom"><div class="panel"><h3>Słownik na trasie</h3><div class="route2-glossary">${M.route2.glossary.map(([term,text])=>`<div><strong>${esc(term)}</strong><span>${esc(text)}</span></div>`).join('')}</div></div><div class="panel"><h3>Notatka po drugim wejściu</h3><p class="muted small">Zapis lokalny pozostaje razem z godzinami i odhaczonymi punktami.</p><label class="field-label"><span>Co było najlepsze, co ominęliśmy, jaka była pogoda?</span><textarea data-machu-field="route2Notes" rows="9" placeholder="np. 2-B 13:00, mgła zeszła po 20 minutach, najlepsza była Plaza de los Templos…">${esc(saved.route2Notes || '')}</textarea></label></div></div>
-      </section>
-
-      <section class="section" id="machu-rules"><div class="section-head"><div><h2>Twarda checklista przed wyjściem</h2><p>Oficjalne zasady są restrykcyjne. Nie zabierajcie akcesoriów, które mogą zostać zatrzymane przy wejściu.</p></div></div><div class="grid-2"><div class="panel"><div class="checklist">${M.rules.map(x=>`<label class="task-check"><input type="checkbox" data-machu-check="${esc(x.id)}" ${saved.checks?.[x.id]?'checked':''}><span>${esc(x.text)}</span></label>`).join('')}</div></div><div class="panel"><h3>Zakazane lub ryzykowne</h3><div class="simple-list">${M.prohibited.map((x,i)=>`<div class="simple-item"><span>${String(i+1).padStart(2,'0')}</span><div>${esc(x)}</div></div>`).join('')}</div></div></div></section>
-
-      <section class="section"><div class="section-head"><div><h2>Decyzja bezpieczeństwa</h2><p>Warunki na trasie są ważniejsze niż idealny plan.</p></div></div><div class="machu-risk-grid">${M.risk.map(x=>`<article class="risk-${esc(x.level)}"><span>${esc(x.level)}</span><h3>${esc(x.title)}</h3><p>${esc(x.action)}</p></article>`).join('')}</div></section>
-
-      <section class="section grid-2"><div class="panel"><h3>Pełny rozdział historyczny</h3><p class="muted">Architektura, historia badań, hipotezy, Świątynia Słońca, Kondor i Circuito 2 są opisane w rozdziale książkowym.</p><button class="soft-btn" type="button" data-chapter="machu">Otwórz rozdział →</button></div><div class="panel"><h3>Dane i źródła</h3><div class="field-source-list">${M.sources.map(x=>`<a href="${esc(x.url)}" target="_blank" rel="noreferrer">${esc(x.label)} ↗</a>`).join('')}</div><button class="soft-btn" type="button" id="exportMachu">Eksportuj zapis Machu</button></div></section>
+    const route2Labels = { 'not-tried':'Jeszcze nie próbowano', queue:'W kolejce', bought:'Bilet kupiony', unavailable:'Brak biletu' };
+    const view = ['day','3a','2','history','rules'].includes(chapterId) ? chapterId : 'day';
+    const contentByView = {
+      day: () => machuDayView(M, saved, checkCount, routeCount, route2Labels),
+      '3a': () => machuRoute3View(M, saved, routeCount),
+      '2': () => machuRoute2View(M, saved),
+      history: () => machuHistoryView(M),
+      rules: () => machuRulesView(M, saved, checkCount)
+    };
+    return `<main class="page machu-page machu-focused">
+      <header class="machu-compact-head"><div><span>19–20.09 · Ruta 3-A + opcjonalna Ruta 2</span><h1>Machu Picchu</h1><p>${loc({pl:'Moduł podzielony na pięć krótkich ekranów. Nie musisz już przewijać wszystkiego naraz.',en:'The module is split into five focused screens. No more endless scrolling.',es:'El módulo está dividido en cinco pantallas. Sin desplazamiento interminable.'})}</p></div><div class="machu-ticket-mini"><span>20.09</span><strong>07:00</strong><small>Ruta 3-A</small></div></header>
+      ${machuTabs(view)}
+      ${contentByView[view]()}
     </main>`;
   }
+
   function payments() {
     return `
       <main class="page">
@@ -542,7 +626,7 @@
       { name:'Cusco', dates:'14–17.09', route:'cusco', chapter:'cusco', category:'Cusco', target:'plaza', desc:{pl:'Aklimatyzacja, centrum i inkaska warstwa miasta.',en:'Acclimatisation, the centre and the Inca layer of the city.',es:'Aclimatación, centro y capa inca de la ciudad.'} },
       { name:'Sacred Valley', dates:'17.09', route:null, chapter:'sacred', category:'Sacred Valley', target:'pisac', desc:{pl:'Pisac, Moray, Maras i Chinchero podczas prywatnego przejazdu.',en:'Pisac, Moray, Maras and Chinchero on the private transfer.',es:'Pisac, Moray, Maras y Chinchero durante el traslado privado.'} },
       { name:'Ollantaytambo', dates:'17–20.09', route:'ollanta', chapter:'olla', category:'Ollantaytambo', target:'old-town', desc:{pl:'Ruiny, stare miasto i baza przed pociągiem do Aguas.',en:'Ruins, old town and the base before the train to Aguas.',es:'Ruinas, casco antiguo y base antes del tren a Aguas.'} },
-      { name:'Machu Picchu', dates:'19–20.09', route:'machu', chapter:'machu', category:'Machu Picchu', target:'entry', desc:{pl:'Ruta 3-A, Waynapicchu oraz plan zdobycia Ruty 2.',en:'Route 3-A, Waynapicchu and the plan to secure Route 2.',es:'Ruta 3-A, Waynapicchu y el plan para conseguir la Ruta 2.'} }
+      { name:'Machu Picchu', dates:'19–20.09', route:'machu', chapter:'machu', category:'Machu Picchu', target:'overview', desc:{pl:'Ruta 3-A, Waynapicchu oraz plan zdobycia Ruty 2.',en:'Route 3-A, Waynapicchu and the plan to secure Route 2.',es:'Ruta 3-A, Waynapicchu y el plan para conseguir la Ruta 2.'} }
     ];
     return `
       <main class="page guide-hub-page">
@@ -944,17 +1028,15 @@
     const groups = [
       ['Zwierzęta', (window.PERU_AMAZON?.species || []).map(x => x.id)],
       ['Rośliny', ['ceiba','rubber-tree','cacao','aguaje','victoria-amazonica','heliconia']],
-      ['Amazonia i Iquitos', ['curassow','canoe','river','wildlife','forest','lodge','habitat','bungalow','iquitos','port','iquitos-sunset','iquitos-centre']],
-      ['Cusco', (window.PERU_CUSCO?.places || []).map(x => x.id)],
+      ['Amazonia i Iquitos', ['curassow','canoe','wildlife','forest','lodge','bungalow','iquitos','port']],
+      ['Cusco', ['plaza','qorikancha','hatun-rumiyoc','san-blas','san-pedro','sacsayhuaman']],
       ['Sacred Valley', ['pisac','moray','maras','chinchero']],
-      ['Lima', (window.PERU_LIMA?.sights || []).map(x => x.id)],
-      ['Ollantaytambo', (window.PERU_OLLANTA?.places || []).map(x => x.id)],
-      ['Machu 3-A', (window.PERU_MACHU?.route3 || []).map(x => x.id)],
-      ['Machu 2-A', window.PERU_MACHU?.route2?.routes?.find(x => x.id === '2a')?.steps?.map(x => x.id) || []],
-      ['Machu 2-B', window.PERU_MACHU?.route2?.routes?.find(x => x.id === '2b')?.steps?.map(x => x.id) || []]
+      ['Lima', ['malecon','kennedy','barranco','huaca','surquillo','centro']],
+      ['Ollantaytambo — zweryfikowane kadry', ['old-town','park']],
+      ['Machu — dokładne obiekty', ['sun','water','climb','summit','descent','condor','2a-quarry','2a-temples','2a-inti','2a-sacred','2a-mirrors','2b-quarry','2b-temples','2b-inti','2b-sacred','2b-mirrors']]
     ];
     return groups.map(([name, ids]) => {
-      const category = name.startsWith('Machu') ? 'Machu Picchu' : name;
+      const category = name.startsWith('Machu') ? 'Machu Picchu' : name.startsWith('Ollantaytambo') ? 'Ollantaytambo' : name;
       const covered = ids.filter(id => photoFor(category, id));
       return { name, total: ids.length, covered: covered.length, missing: ids.filter(id => !photoFor(category, id)) };
     });
@@ -967,10 +1049,10 @@
     const covered = coverage.reduce((sum, x) => sum + x.covered, 0);
     const expected = coverage.reduce((sum, x) => sum + x.total, 0);
     return `<main class="page photos-page">
-      <section class="photos-hero"><div><span class="eyebrow">${loc({pl:'Fotografie dokumentalne · bez generatorów AI',en:'Documentary photographs · no AI generators',es:'Fotografías documentales · sin generadores de IA'})}</span><h1>Zdjęcia<br>terenowe</h1><p>Niewielki, celowy zestaw prawdziwych fotografii. Każdy z 20 gatunków trackera i każdy strukturalnie opisany punkt Cusco, Limy, Ollantaytambo oraz tras Machu Picchu ma przypisane zdjęcie.</p><div class="hero-actions"><button type="button" class="primary-btn" id="downloadPhotoPack">Pobierz zdjęcia offline</button><button type="button" class="ghost-btn" id="clearPhotoPack">Usuń pakiet offline</button></div><div id="photoPackStatus" class="photo-pack-status">${photoPackState().savedAt ? `Ostatni zapis: ${esc(new Date(photoPackState().savedAt).toLocaleString(localeCode()))} · ${esc(photoPackState().ok || 0)}/${PH.items.length}` : 'Najlepiej pobrać przy Wi‑Fi przed wyjazdem.'}</div></div></section>
-      <section class="metrics compact-metrics"><div class="metric"><span>Fotografie</span><strong>${PH.items.length}</strong><small>celowo wybrane, bez zapychania aplikacji</small></div><div class="metric"><span>Zwierzęta</span><strong>${totalAnimals}/20</strong><small>każdy gatunek z trackera</small></div><div class="metric"><span>Pokrycie modułów</span><strong>${covered}/${expected}</strong><small>${expected ? Math.round(covered / expected * 100) : 0}% opisanych punktów</small></div><div class="metric"><span>Grafiki AI</span><strong>0</strong><small>twarda zasada projektu</small></div></section>
+      <section class="photos-hero"><div><span class="eyebrow">${loc({pl:'Fotografie dokumentalne · bez generatorów AI',en:'Documentary photographs · no AI generators',es:'Fotografías documentales · sin generadores de IA'})}</span><h1>Zdjęcia<br>terenowe</h1><p>Niewielki, celowy zestaw prawdziwych fotografii. Każdy z 20 gatunków trackera ma zdjęcie. Przy miejscach pokazujemy fotografię tylko wtedy, gdy pasuje do konkretnego obiektu — brak zdjęcia jest lepszy niż błędny kadr.</p><div class="hero-actions"><button type="button" class="primary-btn" id="downloadPhotoPack">Pobierz zdjęcia offline</button><button type="button" class="ghost-btn" id="clearPhotoPack">Usuń pakiet offline</button></div><div id="photoPackStatus" class="photo-pack-status">${photoPackState().savedAt ? `Ostatni zapis: ${esc(new Date(photoPackState().savedAt).toLocaleString(localeCode()))} · ${esc(photoPackState().ok || 0)}/${PH.items.length}` : 'Najlepiej pobrać przy Wi‑Fi przed wyjazdem.'}</div></div></section>
+      <section class="metrics compact-metrics"><div class="metric"><span>Fotografie</span><strong>${PH.items.length}</strong><small>celowo wybrane, bez zapychania aplikacji</small></div><div class="metric"><span>Zwierzęta</span><strong>${totalAnimals}/20</strong><small>każdy gatunek z trackera</small></div><div class="metric"><span>Pokrycie modułów</span><strong>${covered}/${expected}</strong><small>${expected ? Math.round(covered / expected * 100) : 0}% ręcznie wybranych punktów</small></div><div class="metric"><span>Grafiki AI</span><strong>0</strong><small>twarda zasada projektu</small></div></section>
       <section class="panel photo-policy"><h3>Zasada zdjęć</h3><p>${esc(PH.policy)}</p><p class="muted small">${esc(PH.offlineNote)}</p></section>
-      <section class="section media-audit"><div class="section-head"><div><h2>Audyt pokrycia</h2><p>To jest automatyczne sprawdzenie bieżących danych aplikacji, nie ręczna deklaracja.</p></div></div><div class="media-audit-grid">${coverage.map(x => `<article class="${x.covered === x.total ? 'complete' : 'incomplete'}"><span>${esc(x.name)}</span><strong>${x.covered}/${x.total}</strong><small>${x.missing.length ? `Brak: ${esc(x.missing.join(', '))}` : 'Komplet zdjęć'}</small></article>`).join('')}</div></section>
+      <section class="section media-audit"><div class="section-head"><div><h2>Audyt zgodności</h2><p>Sprawdzamy wyłącznie ręcznie wybrane, dokładnie podpisane kadry. Nie próbujemy już przypisać zdjęcia do każdego etapu za wszelką cenę.</p></div></div><div class="media-audit-grid">${coverage.map(x => `<article class="${x.covered === x.total ? 'complete' : 'incomplete'}"><span>${esc(x.name)}</span><strong>${x.covered}/${x.total}</strong><small>${x.missing.length ? `Brak: ${esc(x.missing.join(', '))}` : 'Komplet zdjęć'}</small></article>`).join('')}</div></section>
       ${categories.map(category => { const items = PH.items.filter(x => x.category === category); if (!items.length) return ''; return `<section class="section"><div class="section-head"><div><h2>${esc(category)}</h2><p>${category === 'Zwierzęta' ? 'Każdy profil z Amazonia Field Module i Wildlife Trackera ma fotografię identyfikacyjną.' : category === 'Rośliny' ? 'Mały zestaw najważniejszych roślin, nie pełny atlas botaniczny.' : 'Punkty, które realnie znajdują się na waszej trasie.'}</p></div><span class="photo-count">${items.length}</span></div><div class="photo-gallery">${items.map(item => `<figure class="photo-card"><a href="${esc(item.source)}" target="_blank" rel="noreferrer"><img src="${esc(item.image)}" alt="${esc(item.title)} — fotografia dokumentalna" loading="lazy" decoding="async" onerror="this.closest('figure').classList.add('photo-failed')"></a><figcaption><h3>${esc(item.title)}</h3><p>${esc(item.caption)}</p><a href="${esc(item.source)}" target="_blank" rel="noreferrer">Autor, oryginał i licencja ↗</a></figcaption></figure>`).join('')}</div></section>`; }).join('')}
     </main>`;
   }
@@ -1247,6 +1329,7 @@
     $$('[data-close-phrase]').forEach(button => button.addEventListener('click', closePhrase));
     $('#phraseModalSpeak')?.addEventListener('click', () => speakPhrase(activePhrase));
     $('#phraseModalCopy')?.addEventListener('click', () => copyPhrase(activePhrase));
+    $$('[data-machu-view]').forEach((button) => button.addEventListener('click', () => navigate('machu', button.dataset.machuView)));
     $$('[data-route]').forEach((button) => button.addEventListener('click', () => navigate(button.dataset.route)));
     $$('[data-plan-day]').forEach((button) => button.addEventListener('click', () => navigate('plan', button.dataset.planDay)));
     $$('[data-chapter]').forEach((button) => button.addEventListener('click', () => navigate('guide', button.dataset.chapter)));
@@ -1435,7 +1518,6 @@
       $('.mobile-overlay')?.classList.remove('show'); $('.menu-btn')?.setAttribute('aria-expanded', 'false');
     });
     $('#printBtn')?.addEventListener('click', () => print());
-    if (route === 'plan' && chapterId) setTimeout(() => document.getElementById(`day-${chapterId.replace('.', '-')}`)?.scrollIntoView({ behavior:'smooth', block:'start' }), 60);
     refreshSystemStatus().catch(() => {});
     updateReadingProgress();
   }

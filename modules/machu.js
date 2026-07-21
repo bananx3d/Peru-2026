@@ -173,4 +173,101 @@
       {label:'Licencja prawdziwego zdjęcia hero', url:'https://commons.wikimedia.org/wiki/File:Machu_Picchu_(Peru).jpg'}
     ]
   };
+
+  const L = (pl, en, es) => ({ pl, en, es });
+  const pointHistory = {
+    entry: {
+      title: L('Tarasy jako fundament miasta', 'Terraces as the city’s foundation', 'Terrazas como fundamento de la ciudad'),
+      body: [
+        L('Tarasy Machu Picchu nie były jedynie polami. Ich warstwy kamienia, żwiru, piasku i gleby stabilizowały strome zbocze oraz odprowadzały ogromne ilości wody podczas intensywnych opadów.', 'Machu Picchu’s terraces were not merely fields. Layers of stone, gravel, sand and soil stabilised the steep ridge and drained intense rainfall.', 'Las terrazas de Machu Picchu no eran solo campos. Capas de piedra, grava, arena y tierra estabilizaban la ladera y drenaban lluvias intensas.'),
+        L('Bez tej niewidocznej infrastruktury monumentalna zabudowa nie mogłaby bezpiecznie funkcjonować. Wchodząc, patrzcie więc na przekrój zbocza, a nie wyłącznie na panoramę.', 'Without this hidden infrastructure the monumental architecture could not function safely. Read the slope before chasing the panorama.', 'Sin esta infraestructura oculta la arquitectura monumental no podría funcionar con seguridad. Leed la ladera antes de perseguir la panorámica.')
+      ]
+    },
+    royal: {
+      title: L('Dlaczego mówi się o sektorze królewskim', 'Why this is called the royal sector', 'Por qué se llama sector real'),
+      body: [
+        L('Precyzyjniejsza kamieniarka, kontrolowane wejścia i niewielkie zespoły pomieszczeń wskazują na wysoką rangę użytkowników. To jeden z argumentów za interpretacją Machu Picchu jako królewskiej posiadłości związanej z Pachacutecem.', 'Finer masonry, controlled entrances and compact room groups indicate high-status users. This supports the interpretation of Machu Picchu as a royal estate associated with Pachacuti.', 'La cantería fina, accesos controlados y pequeños conjuntos de recintos indican usuarios de alto rango. Esto apoya la interpretación de una propiedad real vinculada a Pachacútec.'),
+        L('Nie oznacza to jednak, że całe stanowisko było prywatnym pałacem. Funkcje ceremonialne, administracyjne, rolnicze i usługowe współistniały w jednym złożonym organizmie.', 'It does not mean the entire site was a private palace. Ceremonial, administrative, agricultural and service functions coexisted.', 'No significa que todo el sitio fuera un palacio privado. Funciones ceremoniales, administrativas, agrícolas y de servicio coexistían.')
+      ]
+    },
+    sun: {
+      title: L('Świątynia Słońca i naturalna skała', 'Temple of the Sun and natural rock', 'Templo del Sol y roca natural'),
+      body: [
+        L('Półkolisty mur należy do najbardziej wyrafinowanej kamieniarki na stanowisku. Budowlę osadzono na naturalnej skale, pod którą znajduje się przestrzeń tradycyjnie nazywana Grobowcem Królewskim, choć jej dokładna funkcja pozostaje dyskutowana.', 'The curved wall is among the site’s finest masonry. It sits on natural rock above a chamber traditionally called the Royal Tomb, although its exact function remains debated.', 'El muro curvo pertenece a la cantería más fina. Se apoya sobre roca natural y una cámara llamada tradicionalmente Tumba Real, aunque su función exacta sigue debatida.'),
+        L('Okna i orientacja budowli łączone są z obserwacją Słońca, lecz ostrożniej mówić o świadomym związku z cyklem słonecznym niż o prostym „obserwatorium” działającym jak współczesny instrument.', 'Its windows and orientation relate to the solar cycle, but it is safer to speak of deliberate solar relationships than a simple modern-style observatory.', 'Sus ventanas y orientación se relacionan con el ciclo solar, pero es más prudente hablar de una relación solar intencional que de un observatorio moderno.')
+      ]
+    },
+    water: {
+      title: L('Woda organizowała przestrzeń', 'Water organised the site', 'El agua organizaba el espacio'),
+      body: [
+        L('Źródło położone powyżej miasta zasilało kanał i serię kolejnych fontann. Układ wymagał dokładnego spadku, kontroli przepływu i stałego utrzymania.', 'A spring above the city fed a canal and a sequence of fountains. The system required careful gradient, flow control and maintenance.', 'Un manantial sobre la ciudad alimentaba un canal y una serie de fuentes. El sistema exigía pendiente precisa, control del flujo y mantenimiento.'),
+        L('Dostęp do wody odzwierciedlał również organizację społeczną: najważniejsze zespoły otrzymywały ją wcześniej, zanim przepływała do niższych sektorów.', 'Access to water also reflected social organisation: high-status compounds received it before lower sectors.', 'El acceso al agua también reflejaba organización social: los conjuntos de mayor rango la recibían antes que los sectores inferiores.')
+      ]
+    },
+    gate: {
+      title: L('Z miasta na górski szlak', 'From city to mountain trail', 'De la ciudad al sendero de montaña'),
+      body: [
+        L('Waynapicchu góruje nad llaqta i jest integralną częścią kompozycji krajobrazowej. Inkaskie schody oraz niewielkie tarasy pokazują, że szczyt nie był wyłącznie naturalnym tłem.', 'Waynapicchu dominates the llaqta and forms part of its designed landscape. Inca stairs and small terraces show that the peak was more than a natural backdrop.', 'Waynapicchu domina la llaqta y forma parte de su paisaje diseñado. Escaleras incas y pequeñas terrazas muestran que la cumbre era más que un fondo natural.'),
+        L('Dokładna funkcja zabudowy na górze nie jest pewna. Najbezpieczniej traktować ją jako przestrzeń o szczególnym znaczeniu, powiązaną z ruchem, obserwacją i rytuałem, bez udawania jednej ostatecznej odpowiedzi.', 'The exact function of its structures is uncertain. Treat it as a special space linked to movement, observation and ritual rather than forcing one final answer.', 'La función exacta de sus estructuras es incierta. Conviene verla como espacio especial ligado al movimiento, observación y ritual, sin imponer una respuesta única.')
+      ]
+    },
+    climb: {
+      title: L('Inkaska ścieżka na ekstremalnym zboczu', 'An Inca path on an extreme slope', 'Un camino inca en una ladera extrema'),
+      body: [
+        L('Schody wykorzystują naturalny kształt góry i miejscami są wcięte bezpośrednio w skałę. Ich obecność pokazuje, jak Inkowie prowadzili ruch przez teren, który z pozoru nie nadaje się do zabudowy.', 'The stairs exploit the mountain’s natural form and are sometimes cut directly into rock. They show how Inca builders channelled movement through apparently impossible terrain.', 'Las escaleras aprovechan la forma natural y a veces están talladas directamente en la roca. Muestran cómo los incas guiaban el movimiento por terreno aparentemente imposible.'),
+        L('Dzisiejsze zabezpieczenia zmieniają doświadczenie, ale nie geometrię zbocza. To odcinek do przejścia spokojnie, a nie miejsce na filmowanie podczas ruchu.', 'Modern protection changes the experience but not the slope’s geometry. Walk calmly; do not film while moving.', 'Las protecciones modernas cambian la experiencia, no la geometría. Caminar con calma y no filmar en movimiento.')
+      ]
+    },
+    summit: {
+      title: L('Tarasy ponad llaqta', 'Terraces above the llaqta', 'Terrazas sobre la llaqta'),
+      body: [
+        L('Na górnych partiach Waynapicchu znajdują się tarasy i niewielkie konstrukcje wymagające ogromnego nakładu pracy. Ich położenie podkreśla znaczenie samej góry w inkaskim krajobrazie.', 'Upper Waynapicchu contains terraces and small structures that required extraordinary labour. Their location emphasises the mountain’s importance in the Inca landscape.', 'La parte alta contiene terrazas y pequeñas estructuras que exigieron enorme trabajo. Su ubicación subraya la importancia de la montaña en el paisaje inca.'),
+        L('Widok pozwala odczytać całe założenie: grzbiet, sektor rolniczy, miejski rdzeń i zakole Urubamby. To najlepsze miejsce, aby zrozumieć wybór lokalizacji, nie tylko zrobić zdjęcie.', 'The view reveals the ridge, agricultural sector, urban core and Urubamba bend. Use it to understand the location, not merely for a photograph.', 'La vista permite leer la cresta, sector agrícola, núcleo urbano y curva del Urubamba. Sirve para comprender la ubicación, no solo para una foto.')
+      ]
+    },
+    descent: {
+      title: L('Zejście jest częścią historycznej drogi', 'The descent is part of the historic path', 'El descenso forma parte del camino histórico'),
+      body: [
+        L('Wąskie stopnie i wymuszone kierunki ruchu pokazują, że dostęp do szczytu był kontrolowany przez topografię. Nie był to szeroki trakt dla tłumu, lecz specjalistyczna ścieżka górska.', 'Narrow steps and constrained movement show that topography controlled access. This was not a broad public road but a specialised mountain path.', 'Los escalones estrechos y el movimiento limitado muestran un acceso controlado por la topografía. No era una vía amplia, sino un sendero especializado.'),
+        L('Zmęczenie na zejściu jest dzisiaj największym praktycznym zagrożeniem. Historyczny kontekst nie zmienia podstawowej zasady: pełna koncentracja i żadnego telefonu w dłoni.', 'Fatigue on descent is the main practical hazard today. Historical context does not change the rule: full attention and no phone in hand.', 'La fatiga al bajar es hoy el principal riesgo. El contexto histórico no cambia la regla: atención completa y teléfono guardado.')
+      ]
+    },
+    condor: {
+      title: L('Świątynia Kondora — nazwa jest interpretacją', 'Temple of the Condor — the name is an interpretation', 'Templo del Cóndor: el nombre es una interpretación'),
+      body: [
+        L('Naturalne skały i obrobiony element na ziemi tworzą kompozycję przypominającą ptaka. Popularna nazwa pomaga ją zobaczyć, ale nie jest inkaskim podpisem ani pewnym dowodem funkcji.', 'Natural rock and a worked stone on the ground form a bird-like composition. The popular name helps us see it, but it is not an Inca label or proof of function.', 'La roca natural y una piedra trabajada forman una composición parecida a un ave. El nombre ayuda a verla, pero no es una etiqueta inca ni prueba de función.'),
+        L('Ważniejsza jest metoda: inkascy projektanci wykorzystywali zastany głaz, zamiast zastępować go regularną budowlą. Granica między architekturą i krajobrazem pozostaje celowo nieostra.', 'The method matters more: designers incorporated existing rock rather than replacing it with regular construction. Architecture and landscape deliberately merge.', 'Importa más el método: los diseñadores incorporaron la roca existente en vez de sustituirla. Arquitectura y paisaje se fusionan deliberadamente.')
+      ]
+    },
+    exit: {
+      title: L('Machu Picchu po epoce Inków', 'Machu Picchu after the Inca period', 'Machu Picchu después de los incas'),
+      body: [
+        L('Stanowisko zostało opuszczone w okresie kryzysu państwa Inków i podboju hiszpańskiego, ale nie zniknęło z lokalnej wiedzy. Rolnicy mieszkali i pracowali w okolicy długo przed wizytą Hirama Binghama w 1911 roku.', 'The site was abandoned during the crisis of the Inca state and Spanish conquest, but it did not disappear from local knowledge. Farmers lived and worked nearby before Hiram Bingham’s 1911 visit.', 'El sitio fue abandonado durante la crisis inca y conquista española, pero no desapareció del conocimiento local. Agricultores vivían y trabajaban cerca antes de la visita de Hiram Bingham en 1911.'),
+        L('Dzisiejszy obraz jest wynikiem wykopalisk, rekonstrukcji, usuwania roślinności i zarządzania turystyką. Oglądacie więc autentyczne ruiny, ale również ponad sto lat nowoczesnej prezentacji stanowiska.', 'Today’s image results from excavation, reconstruction, vegetation removal and tourism management. You see authentic ruins shaped by over a century of modern presentation.', 'La imagen actual resulta de excavación, reconstrucción, retirada de vegetación y gestión turística. Son ruinas auténticas moldeadas por más de un siglo de presentación moderna.')
+      ]
+    }
+  };
+
+  const route2History = {
+    entry: pointHistory.entry,
+    upper: { title:L('Klasyczny widok jest konstrukcją krajobrazu', 'The classic view is a constructed landscape', 'La vista clásica es un paisaje construido'), body:[L('Panorama działa dlatego, że tarasy, zabudowa i Waynapicchu układają się w czytelną całość. Ten obraz nie jest przypadkowym punktem fotograficznym, lecz efektem świadomego osadzenia miasta na grzbiecie.', 'The panorama works because terraces, buildings and Waynapicchu form a legible whole. It is not merely a photo point but the result of deliberate site planning.', 'La panorámica funciona porque terrazas, edificios y Waynapicchu forman un conjunto legible. No es solo un punto fotográfico, sino resultado de planificación deliberada.') ] },
+    lower: { title:L('Niższa platforma pokazuje miasto bliżej', 'The lower platform brings the city closer', 'La plataforma inferior acerca la ciudad'), body:[L('Niższa perspektywa zmniejsza efekt pocztówki, ale lepiej pokazuje przestrzenność zabudowy i relację tarasów z miejskim rdzeniem.', 'The lower viewpoint is less postcard-like but better reveals the depth of the built environment and the relationship between terraces and urban core.', 'La perspectiva inferior es menos de postal, pero muestra mejor la profundidad del conjunto y relación entre terrazas y núcleo urbano.') ] },
+    gate: { title:L('Foso Seco jako granica funkcjonalna', 'The Dry Moat as a functional boundary', 'El Foso Seco como límite funcional'), body:[L('Tak zwana sucha fosa oddzielała sektor rolniczy od zabudowy miejskiej. Nie była fosą obronną w europejskim sensie, lecz elementem podziału i odprowadzania wody.', 'The so-called Dry Moat separated the agricultural and urban sectors. It was not a European-style defensive moat but a boundary and drainage feature.', 'El llamado Foso Seco separaba sectores agrícola y urbano. No era foso defensivo europeo, sino límite y elemento de drenaje.') ] },
+    sun: pointHistory.sun,
+    quarry: { title:L('Kamieniołom wewnątrz miasta', 'A quarry inside the city', 'Una cantera dentro de la ciudad'), body:[L('Granit pozyskiwano bezpośrednio z wychodni na grzbiecie. Bloki w różnych fazach obróbki pokazują technikę klinów, uderzeń i stopniowego dopasowywania.', 'Granite was extracted from outcrops on the ridge. Blocks in different stages reveal wedging, hammering and gradual fitting.', 'El granito se extraía de afloramientos en la cresta. Bloques en distintas fases muestran cuñas, golpes y ajuste gradual.'),L('Obecność kamieniołomu przypomina, że Machu Picchu było placem budowy przez wiele lat i prawdopodobnie nigdy nie osiągnęło ostatecznie „ukończonego” stanu.', 'The quarry reminds us that Machu Picchu was a construction site for years and may never have reached a final finished state.', 'La cantera recuerda que Machu Picchu fue obra durante años y quizá nunca alcanzó un estado final terminado.') ] },
+    temples: { title:L('Plaza de los Templos', 'Plaza of the Temples', 'Plaza de los Templos'), body:[L('Templo Principal i Templo de las Tres Ventanas tworzą jeden z najbardziej monumentalnych zespołów stanowiska. Skala bloków i jakość obróbki wskazują na znaczenie ceremonialne.', 'The Main Temple and Temple of the Three Windows form one of the site’s most monumental ensembles. Block scale and finish indicate ceremonial importance.', 'El Templo Principal y el de las Tres Ventanas forman uno de los conjuntos más monumentales. Escala y acabado indican importancia ceremonial.'),L('Trzy okna bywają łączone z inkaskimi mitami pochodzenia, ale takie interpretacje wymagają ostrożności. Pewne jest to, że okna kadrują światło i krajobraz.', 'The three windows are sometimes linked to Inca origin myths, but such interpretations require caution. They unquestionably frame light and landscape.', 'Las tres ventanas se vinculan a veces con mitos de origen, pero estas lecturas exigen cautela. Sin duda enmarcan luz y paisaje.') ] },
+    inti: { title:L('Intiwatana — więcej niż zegar słoneczny', 'Intiwatana — more than a sundial', 'Intiwatana: más que un reloj solar'), body:[L('Rzeźbiony kamień na wyniesionej platformie był częścią ceremonialnego krajobrazu. Jego orientacje mają związki ze Słońcem i górami, lecz sprowadzanie go do prostego zegara jest nadmiernym uproszczeniem.', 'The carved stone on its elevated platform belonged to a ceremonial landscape. It relates to sun and mountains, but calling it a simple sundial is an oversimplification.', 'La piedra tallada en plataforma elevada pertenecía a un paisaje ceremonial. Se relaciona con sol y montañas, pero llamarla simple reloj solar es simplificar demasiado.') ] },
+    sacred: { title:L('Roca Sagrada i święty krajobraz', 'Sacred Rock and sacred landscape', 'Roca Sagrada y paisaje sagrado'), body:[L('W inkaskiej kosmologii szczególne skały, źródła i góry mogły być wakami — miejscami lub bytami o znaczeniu sakralnym. Roca Sagrada należy oglądać razem z murem i horyzontem.', 'In Inca cosmology, distinctive rocks, springs and mountains could be wakas—places or beings of sacred significance. View the Sacred Rock together with wall and horizon.', 'En cosmología inca, rocas, manantiales y montañas podían ser wakas. La Roca Sagrada debe verse junto al muro y horizonte.'),L('Popularna sugestia, że jej kształt dokładnie odtwarza górę w tle, jest atrakcyjna, ale pozostaje interpretacją, nie rozstrzygniętym faktem.', 'The popular claim that it exactly mirrors the mountain behind is attractive but remains an interpretation, not settled fact.', 'La idea de que reproduce exactamente la montaña del fondo es atractiva, pero sigue siendo interpretación, no hecho probado.') ] },
+    east: { title:L('Magazyny, przejścia i codzienna logistyka', 'Stores, passages and daily logistics', 'Almacenes, pasos y logística cotidiana'), body:[L('Nie wszystkie budynki były świątyniami. Qolqas, ciągi otworów i prostsza kamieniarka pokazują zaplecze magazynowe oraz organizację codziennego funkcjonowania.', 'Not every building was a temple. Qolqas, repeated openings and simpler masonry reveal storage and the logistics of daily life.', 'No todos los edificios eran templos. Qolqas, vanos repetidos y cantería sencilla muestran almacenamiento y logística cotidiana.') ] },
+    mirrors: { title:L('Espejos de Agua — funkcja nie jest pewna', 'Water Mirrors — function remains uncertain', 'Espejos de Agua: función incierta'), body:[L('Dwie okrągłe misy mogły zbierać wodę i odbijać niebo, lecz brak podstaw, by pewnie nazwać je obserwatorium. Ich znaczenie wynika także z umieszczenia w kontrolowanej przestrzeni mieszkalno-ceremonialnej.', 'Two round basins could hold water and reflect the sky, but evidence does not justify calling them an observatory with certainty. Their controlled architectural setting also matters.', 'Dos cuencos podían contener agua y reflejar el cielo, pero no basta para llamarlos observatorio con certeza. También importa su contexto arquitectónico controlado.') ] },
+    condor: pointHistory.condor,
+    exit: pointHistory.exit
+  };
+
+  window.PERU_MACHU.route3.forEach(step => { if (pointHistory[step.id]) step.history = pointHistory[step.id]; });
+  window.PERU_MACHU.route2.routes.forEach(route => route.steps.forEach(step => {
+    const key = step.id.replace(/^2[ab]-/, '');
+    if (route2History[key]) step.history = route2History[key];
+  }));
+
 })();

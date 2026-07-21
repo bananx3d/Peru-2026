@@ -1,8 +1,8 @@
-const VERSION = 'peru-2026-v17-ux-rebuild';
+const VERSION = 'peru-2026-v18-day-briefs-machu';
 const CORE_CACHE = `${VERSION}-core`;
 const PHOTO_CACHE = 'peru-2026-photo-pack';
 const CORE = [
-  './', './index.html', './styles.css', './data.js', './guides.js', './app.js',
+  './', './index.html', './styles.css', './data.js', './guides.js', './day-details.js', './app.js',
   './modules/journal.js', './modules/amazon.js', './modules/cusco.js',
   './modules/ollantaytambo.js', './modules/lima.js', './modules/machu.js',
   './modules/wildlife.js', './photos.js', './i18n.js', './phrasebook.js', './manifest.webmanifest',

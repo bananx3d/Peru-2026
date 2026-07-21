@@ -31,14 +31,14 @@
   });
 
   window.PERU_PHOTOS = {
-    version: 15,
+    version: 18,
     policy: 'Wyłącznie prawdziwe fotografie z identyfikowalną stroną pliku, autorem i licencją albo oficjalne zdjęcia Curassow użyte za zgodą operatora. Zero obrazów generowanych przez AI.',
     offlineNote: 'Zdjęcia są zewnętrzne, ale moduł ma przycisk pobrania całego pakietu do pamięci podręcznej telefonu. Zrób to raz przed wyjazdem przy Wi‑Fi.',
     audit: {
       animalsExpected: 20,
-      structuredPlaces: 'Cusco, Lima, Ollantaytambo, Sacred Valley oraz wszystkie etapy Ruty 3-A, 2-A i 2-B',
+      structuredPlaces: 'Wybrane, ręcznie dopasowane punkty; brak zdjęcia jest lepszy niż błędne zdjęcie',
       reviewedAt: '2026-07-20',
-      auditMethod: 'Struktura katalogu + domena źródłowa + strona autora/licencji'
+      auditMethod: 'Struktura katalogu + domena źródłowa + zgodność obiektu z podpisem + strona autora/licencji'
     },
     items: [
       // AMAZONIA + IQUITOS — oficjalne fotografie operatora i realne zdjęcia miasta
@@ -58,7 +58,7 @@
       photo('lima-surquillo','Lima',['surquillo'],'Mercado de Surquillo','Mercado Surquillo 1 Lima PE.jpg','Owoce, stoiska i lokalny lunch blisko Miraflores.'),
       photo('lima-centro','Lima',['centro'],'Plaza Mayor','Plaza Mayor, Lima, Peru.jpg','Najważniejszy punkt kolonialnego centrum Limy.'),
 
-      // CUSCO — wszystkie 10 opisanych punktów mają przypisane zdjęcie
+      // CUSCO — fotografie tylko dla ręcznie zweryfikowanych punktów
       photo('cusco-plaza','Cusco',['plaza','cathedral'],'Plaza de Armas i katedra','Plaza de Armas, Cusco.jpg','Kolonialne centrum wzniesione na inkaskim rdzeniu miasta.'),
       photo('cusco-qorikancha','Cusco',['qorikancha'],'Qorikancha','Qoricancha.png','Inkaska kamieniarka zachowana pod klasztorem Santo Domingo.'),
       photo('cusco-hatun','Cusco',['hatun-rumiyoc'],'Kamień dwunastokątny','Cusco Piedra de los doce angulos.jpg','Najbardziej znany detal muru przy Hatun Rumiyoc.'),
@@ -75,12 +75,12 @@
       photo('valley-maras','Sacred Valley',['maras'],'Salinas de Maras','Peru Salinas de Maras.jpg','Tysiące solnych basenów na stromym zboczu.'),
       photo('valley-chinchero','Sacred Valley',['chinchero'],'Chinchero','Chinchero, Peru (1).jpg','Wysoko położone tarasy i zabudowa na trasie z Cusco.'),
 
-      // OLLANTAYTAMBO — dwa zdjęcia obejmują wszystkie opisane punkty
-      photo('ollanta-town','Ollantaytambo',['old-town','channels','inca-bridge'],'Ollantaytambo — żywe miasto Inków','Ollantaytambo, Peru.jpg','Zachowany układ ulic i kanałów u stóp ruin.'),
-      photo('ollanta-terraces','Ollantaytambo',['park','sun-temple','ten-niches','water','pinkuylluna'],'Tarasy i sektor świątynny','Ollantaytambo 1.jpg','Strome tarasy, monumentalny sektor świątynny i zbocza Pinkuylluny.'),
+      // OLLANTAYTAMBO — dwa uczciwie podpisane widoki ogólne
+      photo('ollanta-town','Ollantaytambo',['old-town'],'Ollantaytambo — żywe miasto Inków','Ollantaytambo, Peru.jpg','Zachowany układ ulic i kanałów u stóp ruin.'),
+      photo('ollanta-terraces','Ollantaytambo',['park'],'Tarasy i sektor świątynny','Ollantaytambo 1.jpg','Strome tarasy, monumentalny sektor świątynny i zbocza Pinkuylluny.'),
 
-      // MACHU PICCHU — pełne pokrycie Ruty 3-A, 2-A oraz 2-B
-      photo('machu-classic','Machu Picchu',['entry','royal','gate','exit','2a-entry','2a-upper','2a-gate','2b-entry','2b-lower','2b-gate'],'Machu Picchu i Waynapicchu','Machu Picchu - View of Huayna Picchu (3785421045).jpg','Klasyczna relacja miasta, tarasów i góry Waynapicchu.'),
+      // MACHU PICCHU — wyłącznie dokładne obiekty i jasno podpisane widoki ogólne
+      photo('machu-classic','Machu Picchu',['overview'],'Machu Picchu i Waynapicchu','Machu Picchu - View of Huayna Picchu (3785421045).jpg','Klasyczna relacja miasta, tarasów i góry Waynapicchu.'),
       photo('machu-sun','Machu Picchu',['sun','2a-sun','2b-sun'],'Świątynia Słońca','Machu Picchu Temple of the Sun.jpg','Półkolisty mur dopasowany do naturalnej skały.'),
       photo('machu-water','Machu Picchu',['water'],'Kanał wodny','91 - Machu Picchu - Juin 2009.jpg','System wodny jest jednym z najważniejszych elementów inżynierii miasta.'),
       photo('machu-climb','Machu Picchu',['climb'],'Schody na Waynapicchu','Steps to Huayna Picchu.jpg','Stromy odcinek szlaku — tempo i bezpieczeństwo są ważniejsze od zdjęcia.'),
@@ -90,10 +90,10 @@
       photo('machu-windows','Machu Picchu',['2a-temples','2b-temples'],'Świątynia Trzech Okien','Machu Picchu - Temple of Three Windows (5055231295).jpg','Główny punkt ceremonialnego rdzenia miasta.'),
       photo('machu-inti','Machu Picchu',['2a-inti','2b-inti'],'Intiwatana','Intihuatana, Machu Picchu.jpg','Rzeźbiony kamień na wyniesionej platformie ceremonialnej.'),
       photo('machu-sacred','Machu Picchu',['2a-sacred','2b-sacred'],'Roca Sagrada','Sacred Rock (7914093954).jpg','Skała, mur i górski horyzont tworzą jeden układ.'),
-      photo('machu-east','Machu Picchu',['2a-east','2b-east'],'Wschodni sektor miejski','Machu-picchu-c01.jpg','Przejścia, magazyny i rytm kamiennych otworów.'),
+      photo('machu-east','Machu Picchu',['urban-east-overview'],'Wschodni sektor miejski','Machu-picchu-c01.jpg','Przejścia, magazyny i rytm kamiennych otworów.'),
       photo('machu-mirrors','Machu Picchu',['2a-mirrors','2b-mirrors'],'Espejos de Agua','Machu Picchu, Water Mirrors.jpg','Dwie kamienne misy w kontekście pomieszczenia.'),
       photo('machu-condor','Machu Picchu',['condor','2a-condor','2b-condor'],'Świątynia Kondora','Machu Picchu Temple of the condor.jpg','Naturalna skała i obróbka tworzą kompozycję kojarzoną z kondorem.'),
-      photo('machu-exit','Machu Picchu',['2a-exit','2b-exit'],'Sektor miejski przy końcu trasy','Gabled stone houses and agricultural terraces in the urban sector of Machu Picchu.jpg','Zabudowa i tarasy podsumowują przejście przez miasto.'),
+      photo('machu-exit','Machu Picchu',['urban-overview'],'Sektor miejski przy końcu trasy','Gabled stone houses and agricultural terraces in the urban sector of Machu Picchu.jpg','Zabudowa i tarasy podsumowują przejście przez miasto.'),
 
       // ZWIERZĘTA — dokładnie wszystkie 20 gatunków z modułu Amazonii i Wildlife Trackera
       photo('animal-pink-dolphin','Zwierzęta',['pink-dolphin'],'Delfin amazoński','Amazon river dolphin 3.jpg','W terenie najczęściej zobaczycie grzbiet i moment oddechu.'),

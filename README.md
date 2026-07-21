@@ -1,136 +1,101 @@
-# Peru 2026 Expedition Companion — v17 UX Rebuild
+# Peru 2026 Expedition Companion — v18 Day Briefs + Machu Deep Clean
 
-Prywatna, offline-first aplikacja PWA przygotowana dokładnie pod wyprawę Kuby, Weroniki i Daniela do Peru we wrześniu 2026.
+Offline-first aplikacja PWA przygotowana dokładnie pod wyprawę Kuby, Weroniki i Daniela do Peru we wrześniu 2026.
 
-## Najważniejsza zmiana v17
+## Co naprawia v18
 
-Wersja v17 nie dodaje nowych modułów. Porządkuje istniejącą aplikację tak, aby potrzebna informacja była osiągalna maksymalnie w dwóch krokach.
+Wersja v17 uporządkowała główną nawigację, ale wewnątrz planu i modułu Machu Picchu nadal było za dużo treści na jednym ekranie, za mało kontekstu oraz zbyt duże fotografie. v18 przebudowuje właśnie te miejsca.
 
-Główna nawigacja ma teraz tylko pięć pozycji:
+### Plan dzień po dniu
 
-1. **Start** — aktualny lub najbliższy dzień, stan przygotowań i skróty;
-2. **Plan** — cała wyprawa dzień po dniu;
-3. **Przewodnik** — Lima, Amazonia, Cusco, Sacred Valley, Ollantaytambo i Machu Picchu w jednym miejscu;
-4. **Wildlife** — atlas i tracker obserwacji;
-5. **Więcej** — rezerwacje, checklisty, płatności, Journal, pakowanie, Emergency, słowniczek, zdjęcia, backup i ustawienia.
+Każdy z **23 dni wyprawy** ma teraz osobną kartę otwieraną po kliknięciu. Karta zawiera:
 
-Na iPhonie te pięć pozycji znajduje się w stałym dolnym pasku. Na komputerze odpowiada im uproszczony pasek boczny.
+- rozwinięty przebieg dnia;
+- transport, nocleg i aktualny status;
+- praktyczne rzeczy do zapamiętania;
+- rozwijany **rys historyczny**;
+- link do odpowiedniego rozdziału lub modułu operacyjnego;
+- szybkie przejście do Journalu i słowniczka.
 
-## Co zawiera aplikacja
+Lista dni jest teraz krótkim indeksem, a nie zbiorem wielu rozwiniętych akordeonów.
 
-- Mission Control i plan 04–26.09.2026;
-- rezerwacje, zadania, płatności i pakowanie;
-- Expedition Journal;
-- Amazonia Field Module i Wildlife Tracker;
-- moduły Limy, Cusco, Ollantaytambo i Machu Picchu;
-- Sacred Valley oraz długie rozdziały historyczne;
-- Machu Picchu: Ruta 3-A Waynapicchu oraz dokładne Ruty 2-A i 2-B;
-- 68 prawdziwych fotografii przypisanych do zwierząt i punktów trasy;
-- pełny backup/import danych lokalnych;
-- panel diagnostyczny i pakiet zdjęć offline;
-- interfejs **polski / English / español**;
-- słowniczek podróżny z 81 zwrotami w 9 kategoriach.
+### Machu Picchu
 
-## Nowy ekran Start
+Machu zostało podzielone na pięć osobnych widoków:
 
-Ekran startowy pokazuje:
+1. **Dzień 20.09** — bilet, godziny i plan operacyjny;
+2. **Ruta 3-A** — dokładna sekwencja Waszej potwierdzonej trasy z Waynapicchu;
+3. **Ruta 2-A / 2-B** — porównanie i szczegółowe punkty obu wariantów;
+4. **Historia** — chronologia i ostrożnie opisany kontekst stanowiska;
+5. **Zasady** — dokumenty, checklista, zakazy i bezpieczeństwo.
 
-- liczbę dni do wyjazdu albo aktualny dzień wyprawy;
-- najbliższy etap z noclegiem i transportem;
-- status przygotowań;
-- najbliższe zadanie do zamknięcia;
-- szybkie wejścia do przewodnika, Wildlife, słowniczka i Emergency;
-- skrót do rezerwacji i checklist.
+Każdy etap tras ma opis tego, co zobaczycie, praktyczną wskazówkę oraz rozwijany rys historyczny. Nie trzeba przewijać jednego ogromnego ekranu.
 
-## Nowy Przewodnik
+## Fotografie
 
-Wszystkie miejsca są zebrane w jednym hubie i ułożone zgodnie z trasą:
+Zasada v18 brzmi:
 
-- Lima;
-- Amazonia i Iquitos;
-- Cusco;
-- Sacred Valley;
-- Ollantaytambo;
-- Machu Picchu.
+> Brak zdjęcia jest lepszy niż zdjęcie przedstawiające inny punkt.
 
-Każda karta prowadzi bezpośrednio do modułu praktycznego. Dłuższe teksty historyczne pozostają niżej jako osobna sekcja, zamiast mieszać się z operacyjną nawigacją.
+Zmiany:
 
-## Ekran Więcej
+- fotografie w kartach zostały znacznie zmniejszone;
+- miniatury na trasach Machu nie dominują już nad tekstem;
+- usunięto szerokie, nieprecyzyjne przypisania zdjęć do etapów;
+- zdjęcie pojawia się przy punkcie Machu tylko wtedy, gdy przedstawia dokładnie ten obiekt;
+- katalog nadal zawiera 68 prawdziwych fotografii;
+- 20/20 zwierząt nadal ma fotografię identyfikacyjną;
+- nie dodano żadnych obrazów generowanych przez AI.
 
-Funkcje pomocnicze zostały pogrupowane:
+Zdjęcia pozostają zewnętrzne i mogą zostać pobrane do pamięci offline przez ekran **Więcej → Offline, kopia i język**.
 
-### Przed wyjazdem
+## Główna struktura
 
-- Rezerwacje;
-- Checklisty;
-- Płatności;
-- Pakowanie.
+Nawigacja pozostaje ograniczona do pięciu pozycji:
 
-### Podczas podróży
+1. **Start**;
+2. **Plan**;
+3. **Przewodnik**;
+4. **Wildlife**;
+5. **Więcej**.
 
-- Journal;
-- Słowniczek;
-- Emergency.
+Wszystkie wcześniejsze funkcje zostały zachowane: rezerwacje, checklisty, płatności, pakowanie, Journal, Emergency, Wildlife Tracker, zdjęcia offline, pełny backup, PL / EN / ES oraz słowniczek z 81 zwrotami.
 
-### Aplikacja i dane
+## Aktualizacja z v17
 
-- Zdjęcia;
-- Offline, backup, aktualizacje i język.
+1. W aktualnej aplikacji wykonaj pełny backup.
+2. Zastąp całą zawartość repozytorium plikami z ZIP-a v18.
+3. Wykonaj commit i poczekaj na publikację GitHub Pages.
+4. Otwórz aplikację i wybierz **Więcej → Offline, kopia i język → Sprawdź aktualizację**.
+5. Gdy stary cache nadal się pojawia, zamknij aplikację z przełącznika aplikacji i uruchom ponownie.
 
-## Języki
-
-Język można zmienić:
-
-- na komputerze w dolnej części paska bocznego;
-- na telefonie w ekranie **Więcej**;
-- w ekranie **Offline, kopia i diagnostyka**.
-
-Wybrany język jest zapisywany lokalnie i działa offline.
-
-## Zdjęcia i zasada zero AI
-
-Nie użyto generatora obrazów. Katalog odwołuje się do fotografii z Wikimedia Commons oraz oficjalnych fotografii Curassow używanych za zgodą operatora. Każdy wpis prowadzi do strony źródłowej z informacją o autorze i licencji.
-
-Zdjęcia nie są fizycznie w ZIP-ie. Po publikacji:
-
-1. Otwórz aplikację w Safari przy Wi‑Fi.
-2. Wejdź w **Więcej → Offline, kopia i język**.
-3. Wybierz **Pobierz / uzupełnij**.
-4. Przed podróżą sprawdź licznik zapisanych zdjęć.
+Klucze danych lokalnych zostały zachowane, więc aktualizacja nie powinna usuwać Journalu, checklist, obserwacji ani ustawień. Backup przed podmianą nadal jest obowiązkowym zabezpieczeniem.
 
 ## Instalacja na iPhonie
 
-1. Otwórz stronę GitHub Pages w Safari.
-2. Naciśnij **Udostępnij**.
-3. Wybierz **Dodaj do ekranu początkowego**.
-4. Uruchamiaj aplikację z utworzonej ikony.
-
-## Backup
-
-Wybierz **Więcej → Offline, kopia i język → Eksportuj pełny backup**. Plik JSON zawiera język, checklisty, Journal, obserwacje zwierząt i zapisy wszystkich modułów.
-
-## GitHub Pages
-
-Rozpakuj ZIP i wgraj całą zawartość katalogu głównego do repozytorium. `index.html` musi leżeć w katalogu głównym. Po podmianie plików otwórz aplikację i użyj funkcji sprawdzania aktualizacji albo odśwież stronę.
+1. Otwórz GitHub Pages w Safari.
+2. Wybierz **Udostępnij**.
+3. Naciśnij **Dodaj do ekranu początkowego**.
+4. Uruchamiaj aplikację z ikony.
 
 ## Prywatność
 
-Publiczny build nie zawiera kodów rezerwacji, dokładnych adresów prywatnych apartamentów, numeru telefonu Martina ani dokładnych kwot wpłat. Bezpośredni link do prywatnego sejfu Notion pozostaje usunięty.
+Publiczny build nie zawiera kodów rezerwacji, pełnych adresów prywatnych apartamentów, numeru telefonu Martina, dokładnych wpłat ani bezpośredniego linku do prywatnego Notion.
 
-## Testy
+## Audyt
 
-Raporty najnowszego wydania:
+Najnowsze raporty:
 
-- `CHANGELOG_v17.md`;
-- `UX_AUDIT_v17.md`;
-- `QA_REPORT_v17.md`;
-- `I18N_AUDIT_v17.md`;
-- `MEDIA_AUDIT_v17.md`.
+- `CHANGELOG_v18.md`;
+- `UX_AUDIT_v18.md`;
+- `QA_REPORT_v18.md`;
+- `I18N_AUDIT_v18.md`;
+- `MEDIA_AUDIT_v18.md`.
 
-Automatyczny audyt:
+Ponowne uruchomienie audytu:
 
 ```bash
 node qa/audit.js
 ```
 
-Audyt renderuje wszystkie trasy w środowisku testowym i sprawdza strukturę aplikacji. Nie zastępuje fizycznego testu dotykowego w Safari na konkretnym iPhonie.
+Audyt sprawdza składnię, 37 tras aplikacji, wszystkie karty dni, pięć widoków Machu, multimedia, tłumaczenia, service worker, manifest i wzorce danych wrażliwych. Nie zastępuje ręcznego testu dotykowego w Safari na konkretnym iPhonie.
